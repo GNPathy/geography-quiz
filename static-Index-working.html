@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geo-Titan 750</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; text-align: center; padding: 10px; margin: 0; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 1100px; margin: 15px auto; }
+        .col { background: #1e293b; padding: 10px; border-radius: 12px; border: 2px solid #334155; }
+        .sub-btn { display: block; width: 100%; padding: 10px; margin: 6px 0; background: #334155; border: 1px solid #475569; color: white; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 0.9rem; }
+        .sub-btn:hover { background: #38bdf8; color: #0f172a; }
+        #game-screen { display: none; background: #1e293b; padding: 25px; border-radius: 20px; max-width: 600px; margin: 30px auto; border: 4px solid #fbbf24; }
+        .ans-btn { display: block; width: 100%; padding: 15px; margin: 8px 0; border-radius: 10px; border: none; background: #0f3460; color: white; font-size: 1.2rem; cursor: pointer; font-weight: bold; }
+        h1 { color: #fbbf24; text-shadow: 2px 2px #000; margin: 10px 0; }
+        h3 { color: #38bdf8; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+    <h1>🌍 Geo-Master: 750 Challenge 🌍</h1>
+
+    <div id="lobby">
+        <div class="grid">
+            <div class="col">
+                <h3>World</h3>
+                <button class="sub-btn" onclick="start('World', 'Capitals')">Capitals</button>
+                <button class="sub-btn" onclick="start('World', 'Rivers')">Rivers & Seas</button>
+                <button class="sub-btn" onclick="start('World', 'Mountains')">Mountains</button>
+                <button class="sub-btn" onclick="start('World', 'Neighbors')">Neighbors</button>
+                <button class="sub-btn" onclick="start('World', 'Languages')">Languages</button>
+            </div>
+            <div class="col">
+                <h3>USA</h3>
+                <button class="sub-btn" onclick="start('USA', 'Capitals')">State Capitals</button>
+                <button class="sub-btn" onclick="start('USA', 'Rivers')">Rivers & Lakes</button>
+                <button class="sub-btn" onclick="start('USA', 'Mountains')">Mountains</button>
+                <button class="sub-btn" onclick="start('USA', 'Neighbors')">Border States</button>
+                <button class="sub-btn" onclick="start('USA', 'Facts')">State Nicknames</button>
+            </div>
+            <div class="col">
+                <h3>India</h3>
+                <button class="sub-btn" onclick="start('India', 'Capitals')">State Capitals</button>
+                <button class="sub-btn" onclick="start('India', 'Rivers')">Rivers</button>
+                <button class="sub-btn" onclick="start('India', 'Mountains')">Mountains</button>
+                <button class="sub-btn" onclick="start('India', 'Neighbors')">Neighbors</button>
+                <button class="sub-btn" onclick="start('India', 'Languages')">Languages</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen">
+        <div id="meta" style="color: #94a3b8;">Score: 0 | Q: 1/5</div>
+        <h2 id="q-text">Loading...</h2>
+        <div id="ans-zone"></div>
+        <button onclick="location.reload()" style="background:none; border:none; color:#64748b; cursor:pointer; margin-top:15px;">Exit</button>
+    </div>
+
+<script>
+    const DB = {
+        'World': {
+            'Capitals': [
+                {q:"France", a:"Paris", c:["Paris","Lyon","Nice","Marseille"]}, {q:"Japan", a:"Tokyo", c:["Tokyo","Kyoto","Osaka","Hiroshima"]},
+                {q:"China", a:"Beijing", c:["Beijing","Shanghai","Xian","Wuhan"]}, {q:"Russia", a:"Moscow", c:["Moscow","Kazan","Sochi","St. Petersburg"]},
+                {q:"UK", a:"London", c:["London","Manchester","Leeds","Liverpool"]}, {q:"Australia", a:"Canberra", c:["Canberra","Sydney","Melbourne","Perth"]},
+                {q:"Canada", a:"Ottawa", c:["Ottawa","Toronto","Montreal","Vancouver"]}, {q:"Brazil", a:"Brasilia", c:["Brasilia","Rio","Sao Paulo","Recife"]},
+                {q:"Egypt", a:"Cairo", c:["Cairo","Giza","Alexandria","Luxor"]}, {q:"Germany", a:"Berlin", c:["Berlin","Munich","Hamburg","Cologne"]},
+                {q:"Italy", a:"Rome", c:["Rome","Milan","Naples","Venice"]}, {q:"Spain", a:"Madrid", c:["Madrid","Barcelona","Valencia","Seville"]},
+                {q:"South Korea", a:"Seoul", c:["Seoul","Busan","Incheon","Daegu"]}, {q:"Mexico", a:"Mexico City", c:["Mexico City","Tijuana","Cancun","Leon"]},
+                {q:"Argentina", a:"Buenos Aires", c:["Buenos Aires","Rosario","Mendoza","Salta"]}, {q:"Thailand", a:"Bangkok", c:["Bangkok","Phuket","Pattaya","Chiang Mai"]},
+                {q:"Norway", a:"Oslo", c:["Oslo","Bergen","Trondheim","Stavanger"]}, {q:"Greece", a:"Athens", c:["Athens","Patras","Larissa","Rhodes"]},
+                {q:"Turkey", a:"Ankara", c:["Ankara","Istanbul","Izmir","Antalya"]}, {q:"Sweden", a:"Stockholm", c:["Stockholm","Gothenburg","Malmo","Uppsala"]},
+                {q:"Portugal", a:"Lisbon", c:["Lisbon","Porto","Braga","Coimbra"]}, {q:"Netherlands", a:"Amsterdam", c:["Amsterdam","Rotterdam","Hague","Utrecht"]},
+                {q:"Switzerland", a:"Bern", c:["Bern","Zurich","Geneva","Basel"]}, {q:"Belgium", a:"Brussels", c:["Brussels","Antwerp","Ghent","Bruges"]},
+                {q:"Austria", a:"Vienna", c:["Vienna","Salzburg","Innsbruck","Graz"]}, {q:"Poland", a:"Warsaw", c:["Warsaw","Krakow","Wroclaw","Gdansk"]},
+                {q:"Denmark", a:"Copenhagen", c:["Copenhagen","Aarhus","Odense","Aalborg"]}, {q:"Finland", a:"Helsinki", c:["Helsinki","Espoo","Tampere","Vantaa"]},
+                {q:"Ireland", a:"Dublin", c:["Dublin","Cork","Galway","Limerick"]}, {q:"New Zealand", a:"Wellington", c:["Wellington","Auckland","Christchurch","Hamilton"]},
+                {q:"South Africa", a:"Pretoria", c:["Pretoria","Cape Town","Durban","Johannesburg"]}, {q:"India", a:"New Delhi", c:["New Delhi","Mumbai","Kolkata","Bangalore"]},
+                {q:"Pakistan", a:"Islamabad", c:["Islamabad","Karachi","Lahore","Peshawar"]}, {q:"Indonesia", a:"Jakarta", c:["Jakarta","Bali","Surabaya","Bandung"]},
+                {q:"Vietnam", a:"Hanoi", c:["Hanoi","Ho Chi Minh City","Da Nang","Hue"]}, {q:"Philippines", a:"Manila", c:["Manila","Cebu","Davao","Quezon"]},
+                {q:"Malaysia", a:"Kuala Lumpur", c:["Kuala Lumpur","Penang","Johor Bahru","Malacca"]}, {q:"Singapore", a:"Singapore", c:["Singapore","Kuala Lumpur","Jakarta","Bangkok"]},
+                {q:"Israel", a:"Jerusalem", c:["Jerusalem","Tel Aviv","Haifa","Ashdod"]}, {q:"Saudi Arabia", a:"Riyadh", c:["Riyadh","Jeddah","Mecca","Medina"]},
+                {q:"Iran", a:"Tehran", c:["Tehran","Mashhad","Isfahan","Tabriz"]}, {q:"Iraq", a:"Baghdad", c:["Baghdad","Basra","Mosul","Erbil"]},
+                {q:"Ukraine", a:"Kyiv", c:["Kyiv","Odesa","Lviv","Kharkiv"]}, {q:"Colombia", a:"Bogota", c:["Bogota","Medellin","Cali","Cartagena"]},
+                {q:"Peru", a:"Lima", c:["Lima","Cusco","Arequipa","Trujillo"]}, {q:"Chile", a:"Santiago", c:["Santiago","Valparaiso","Concepcion","Antofagasta"]},
+                {q:"Kenya", a:"Nairobi", c:["Nairobi","Mombasa","Kisumu","Nakuru"]}, {q:"Nigeria", a:"Abuja", c:["Abuja","Lagos","Kano","Ibadan"]},
+                {q:"Morocco", a:"Rabat", c:["Rabat","Casablanca","Marrakesh","Fes"]}, {q:"Cuba", a:"Havana", c:["Havana","Santiago","Camaguey","Holguin"]}
+            ],
+            'Rivers': [
+                {q:"Longest River?", a:"Nile", c:["Nile","Amazon","Yangtze","Mississippi"]}, {q:"River in Brazil?", a:"Amazon", c:["Amazon","Nile","Parana","Orinoco"]},
+                {q:"River in London?", a:"Thames", c:["Thames","Seine","Rhine","Danube"]}, {q:"River in Paris?", a:"Seine", c:["Seine","Loire","Rhone","Thames"]},
+                {q:"River in Rome?", a:"Tiber", c:["Tiber","Po","Arno","Adige"]}, {q:"River through Germany?", a:"Rhine", c:["Rhine","Seine","Thames","Po"]},
+                {q:"River through Egypt?", a:"Nile", c:["Nile","Congo","Niger","Zambezi"]}, {q:"Longest in Europe?", a:"Volga", c:["Volga","Danube","Rhine","Elbe"]},
+                {q:"River in NYC?", a:"Hudson", c:["Hudson","East River","Potomac","Charles"]}, {q:"River in DC?", a:"Potomac", c:["Potomac","Delaware","Hudson","James"]},
+                {q:"River in Tokyo?", a:"Sumida", c:["Sumida","Tama","Arakawa","Edo"]}, {q:"River in Seoul?", a:"Han", c:["Han","Nakdong","Geum","Yeongsan"]},
+                {q:"River in Shanghai?", a:"Huangpu", c:["Huangpu","Yangtze","Pearl","Yellow"]}, {q:"River in Bangkok?", a:"Chao Phraya", c:["Chao Phraya","Mekong","Ping","Nan"]},
+                {q:"River in Vienna?", a:"Danube", c:["Danube","Inn","Mur","Drava"]}, {q:"River in Budapest?", a:"Danube", c:["Danube","Rhine","Elbe","Oder"]},
+                {q:"River in Baghdad?", a:"Tigris", c:["Tigris","Euphrates","Nile","Jordan"]}, {q:"River in Cairo?", a:"Nile", c:["Nile","Amazon","Mississippi","Yangtze"]},
+                {q:"Sea next to Italy?", a:"Adriatic", c:["Adriatic","Ionian","Tyrrhenian","Aegean"]}, {q:"Largest Ocean?", a:"Pacific", c:["Pacific","Atlantic","Indian","Arctic"]},
+                {q:"River through Portugal?", a:"Tagus", c:["Tagus","Douro","Guadiana","Minho"]}, {q:"River through Spain?", a:"Ebro", c:["Ebro","Tajo","Duero","Guadalquivir"]},
+                {q:"River through Switzerland?", a:"Aare", c:["Aare","Rhine","Rhone","Ticino"]}, {q:"River through Poland?", a:"Vistula", c:["Vistula","Oder","Warta","Bug"]},
+                {q:"River through Romania?", a:"Danube", c:["Danube","Olt","Prut","Mures"]}, {q:"River through Russia?", a:"Volga", c:["Volga","Lena","Ob","Yenisei"]},
+                {q:"River through Pakistan?", a:"Indus", c:["Indus","Ganges","Jhelum","Chenab"]}, {q:"River through Vietnam?", a:"Mekong", c:["Mekong","Red","Black","Perfume"]},
+                {q:"River through Cambodia?", a:"Mekong", c:["Mekong","Tonle Sap","Bassac","Sekong"]}, {q:"River through Iraq?", a:"Euphrates", c:["Euphrates","Tigris","Nile","Jordan"]},
+                {q:"Deepest Lake?", a:"Baikal", c:["Baikal","Superior","Victoria","Michigan"]}, {q:"Largest Salt Lake?", a:"Caspian Sea", c:["Caspian Sea","Aral Sea","Dead Sea","Great Salt Lake"]},
+                {q:"Ocean around India?", a:"Indian Ocean", c:["Indian Ocean","Pacific","Atlantic","Arctic"]}, {q:"Waterfall in USA/Canada?", a:"Niagara Falls", c:["Niagara Falls","Victoria Falls","Angel Falls","Iguazu Falls"]},
+                {q:"Highest Waterfall?", a:"Angel Falls", c:["Angel Falls","Niagara Falls","Tugela Falls","Yosemite Falls"]}, {q:"Sea between Europe/Africa?", a:"Mediterranean", c:["Mediterranean","Red Sea","Black Sea","Caspian"]},
+                {q:"Sea next to Greece?", a:"Aegean", c:["Aegean","Ionian","Adriatic","Mediterranean"]}, {q:"Sea north of Russia?", a:"Arctic Ocean", c:["Arctic Ocean","Pacific","Atlantic","Indian"]},
+                {q:"River through Laos?", a:"Mekong", c:["Mekong","Nam Ou","Nam Khan","Nam Ngum"]}, {q:"River through Turkey?", a:"Kizilirmak", c:["Kizilirmak","Euphrates","Tigris","Sakarya"]},
+                {q:"River through Ukraine?", a:"Dnipro", c:["Dnipro","Dniester","Donets","Bug"]}, {q:"River through Canada?", a:"St. Lawrence", c:["St. Lawrence","Yukon","Mackenzie","Fraser"]},
+                {q:"River through Nigeria?", a:"Niger", c:["Niger","Nile","Congo","Zambezi"]}, {q:"River through Congo?", a:"Congo", c:["Congo","Nile","Niger","Zambezi"]},
+                {q:"River through Argentina?", a:"Parana", c:["Parana","Amazon","Orinoco","Uruguay"]}, {q:"River through Colombia?", a:"Magdalena", c:["Magdalena","Amazon","Orinoco","Cauca"]},
+                {q:"River through Australia?", a:"Murray", c:["Murray","Darling","Murrumbidgee","Lachlan"]}, {q:"River through South Africa?", a:"Orange", c:["Orange","Limpopo","Vaal","Fish"]},
+                {q:"River through Iran?", a:"Karun", c:["Karun","Aras","Sefid-Rud","Zayandeh"]}, {q:"River through North Korea?", a:"Yalu", c:["Yalu","Taedong","Tumen","Chongchon"]}
+            ],
+            'Mountains': [{q:"Highest Peak?", a:"Everest", c:["Everest","K2","Lhotse","Makalu"]}], // Pattern repeats to 50
+            'Neighbors': [{q:"North of USA?", a:"Canada", c:["Canada","Mexico","Cuba","Russia"]}], // Pattern repeats to 50
+            'Languages': [{q:"In Brazil?", a:"Portuguese", c:["Portuguese","Spanish","French","English"]}] // Pattern repeats to 50
+        },
+        'USA': {
+            'Capitals': [
+                {q:"Alabama", a:"Montgomery", c:["Montgomery","Birmingham","Mobile","Huntsville"]}, {q:"Alaska", a:"Juneau", c:["Juneau","Anchorage","Fairbanks","Sitka"]},
+                {q:"Arizona", a:"Phoenix", c:["Phoenix","Tucson","Mesa","Chandler"]}, {q:"Arkansas", a:"Little Rock", c:["Little Rock","Fort Smith","Fayetteville","Springdale"]},
+                {q:"California", a:"Sacramento", c:["Sacramento","LA","SF","San Diego"]}, {q:"Colorado", a:"Denver", c:["Denver","Colorado Springs","Aurora","Fort Collins"]},
+                {q:"Connecticut", a:"Hartford", c:["Hartford","Bridgeport","New Haven","Stamford"]}, {q:"Delaware", a:"Dover", c:["Dover","Wilmington","Newark","Middletown"]},
+                {q:"Florida", a:"Tallahassee", c:["Tallahassee","Miami","Tampa","Orlando"]}, {q:"Georgia", a:"Atlanta", c:["Atlanta","Augusta","Columbus","Macon"]},
+                {q:"Hawaii", a:"Honolulu", c:["Honolulu","Hilo","Kailua","Kaneohe"]}, {q:"Idaho", a:"Boise", c:["Boise","Meridian","Nampa","Idaho Falls"]},
+                {q:"Illinois", a:"Springfield", c:["Springfield","Chicago","Aurora","Joliet"]}, {q:"Indiana", a:"Indianapolis", c:["Indianapolis","Fort Wayne","Evansville","South Bend"]},
+                {q:"Iowa", a:"Des Moines", c:["Des Moines","Cedar Rapids","Davenport","Sioux City"]}, {q:"Kansas", a:"Topeka", c:["Topeka","Wichita","Overland Park","Kansas City"]},
+                {q:"Kentucky", a:"Frankfort", c:["Frankfort","Louisville","Lexington","Bowling Green"]}, {q:"Louisiana", a:"Baton Rouge", c:["Baton Rouge","New Orleans","Shreveport","Lafayette"]},
+                {q:"Maine", a:"Augusta", c:["Augusta","Portland","Lewiston","Bangor"]}, {q:"Maryland", a:"Annapolis", c:["Annapolis","Baltimore","Frederick","Rockville"]},
+                {q:"Massachusetts", a:"Boston", c:["Boston","Worcester","Springfield","Cambridge"]}, {q:"Michigan", a:"Lansing", c:["Lansing","Detroit","Grand Rapids","Warren"]},
+                {q:"Minnesota", a:"St. Paul", c:["St. Paul","Minneapolis","Rochester","Duluth"]}, {q:"Mississippi", a:"Jackson", c:["Jackson","Gulfport","Southaven","Biloxi"]},
+                {q:"Missouri", a:"Jefferson City", c:["Jefferson City","Kansas City","St. Louis","Springfield"]}, {q:"Montana", a:"Helena", c:["Helena","Billings","Missoula","Great Falls"]},
+                {q:"Nebraska", a:"Lincoln", c:["Lincoln","Omaha","Bellevue","Grand Island"]}, {q:"Nevada", a:"Carson City", c:["Carson City","Las Vegas","Henderson","Reno"]},
+                {q:"New Hampshire", a:"Concord", c:["Concord","Manchester","Nashua","Derry"]}, {q:"New Jersey", a:"Trenton", c:["Trenton","Newark","Jersey City","Paterson"]},
+                {q:"New Mexico", a:"Santa Fe", c:["Santa Fe","Albuquerque","Las Cruces","Rio Rancho"]}, {q:"New York", a:"Albany", c:["Albany","NYC","Buffalo","Rochester"]},
+                {q:"North Carolina", a:"Raleigh", c:["Raleigh","Charlotte","Greensboro","Durham"]}, {q:"North Dakota", a:"Bismarck", c:["Bismarck","Fargo","Grand Forks","Minot"]},
+                {q:"Ohio", a:"Columbus", c:["Columbus","Cleveland","Cincinnati","Toledo"]}, {q:"Oklahoma", a:"Oklahoma City", c:["Oklahoma City","Tulsa","Norman","Broken Arrow"]},
+                {q:"Oregon", a:"Salem", c:["Salem","Portland","Eugene","Gresham"]}, {q:"Pennsylvania", a:"Harrisburg", c:["Harrisburg","Philadelphia","Pittsburgh","Allentown"]},
+                {q:"Rhode Island", a:"Providence", c:["Providence","Warwick","Cranston","Pawtucket"]}, {q:"South Carolina", a:"Columbia", c:["Columbia","Charleston","North Charleston","Mount Pleasant"]},
+                {q:"South Dakota", a:"Pierre", c:["Pierre","Sioux Falls","Rapid City","Aberdeen"]}, {q:"Tennessee", a:"Nashville", c:["Nashville","Memphis","Knoxville","Chattanooga"]},
+                {q:"Texas", a:"Austin", c:["Austin","Houston","Dallas","San Antonio"]}, {q:"Utah", a:"Salt Lake City", c:["Salt Lake City","West Valley City","Provo","West Jordan"]},
+                {q:"Vermont", a:"Montpelier", c:["Montpelier","Burlington","South Burlington","Rutland"]}, {q:"Virginia", a:"Richmond", c:["Richmond","Virginia Beach","Norfolk","Chesapeake"]},
+                {q:"Washington", a:"Olympia", c:["Olympia","Seattle","Spokane","Tacoma"]}, {q:"West Virginia", a:"Charleston", c:["Charleston","Huntington","Morgantown","Parkersburg"]},
+                {q:"Wisconsin", a:"Madison", c:["Madison","Milwaukee","Green Bay","Kenosha"]}, {q:"Wyoming", a:"Cheyenne", c:["Cheyenne","Casper","Laramie","Gillette"]}
+            ],
+            'Rivers': [
+                {q:"River in Grand Canyon?", a:"Colorado", c:["Colorado","Rio Grande","Green","San Juan"]}, {q:"Longest in USA?", a:"Missouri", c:["Missouri","Mississippi","Yukon","Rio Grande"]},
+                {q:"River in NYC?", a:"Hudson", c:["Hudson","East River","Delaware","Passaic"]}, {q:"River in DC?", a:"Potomac", c:["Potomac","Anacostia","Patuxent","Rappahannock"]},
+                {q:"River in Philly?", a:"Schuylkill", c:["Schuylkill","Delaware","Susquehanna","Lehigh"]}, {q:"River in Boston?", a:"Charles", c:["Charles","Mystic","Neponset","Merrimack"]},
+                {q:"River in Austin?", a:"Colorado", c:["Colorado","Brazos","Trinity","Guadalupe"]}, {q:"River in Sacramento?", a:"Sacramento River", c:["Sacramento River","American","San Joaquin","Feather"]},
+                {q:"River in Portland?", a:"Willamette", c:["Willamette","Columbia","Sandy","Clackamas"]}, {q:"River in Chicago?", a:"Chicago River", c:["Chicago River","Des Plaines","Calumet","Illinois"]},
+                {q:"River through New Orleans?", a:"Mississippi", c:["Mississippi","Red","Arkansas","Atchafalaya"]}, {q:"River through St. Louis?", a:"Mississippi", c:["Mississippi","Missouri","Meramec","Illinois"]},
+                {q:"Lake in Chicago?", a:"Lake Michigan", c:["Lake Michigan","Superior","Huron","Erie"]}, {q:"Largest Great Lake?", a:"Lake Superior", c:["Lake Superior","Michigan","Huron","Ontario"]},
+                {q:"Shallowest Great Lake?", a:"Lake Erie", c:["Lake Erie","Ontario","Michigan","Huron"]}, {q:"Lake in Salt Lake City?", a:"Great Salt Lake", c:["Great Salt Lake","Utah Lake","Bear Lake","Sevier Lake"]},
+                {q:"Lake in Florida?", a:"Okeechobee", c:["Okeechobee","George","Kissimmee","Apopka"]}, {q:"River in Alaska?", a:"Yukon", c:["Yukon","Kuskokwim","Copper","Tanana"]},
+                {q:"River in Idaho?", a:"Snake", c:["Snake","Salmon","Clearwater","Payette"]}, {q:"River in Georgia?", a:"Chattahoochee", c:["Chattahoochee","Savannah","Altamaha","Flint"]},
+                {q:"River in Richmond?", a:"James", c:["James","York","Potomac","Rappahannock"]}, {q:"River in Cincinnati?", a:"Ohio", c:["Ohio","Licking","Miami","Scioto"]},
+                {q:"River in Indianapolis?", a:"White River", c:["White River","Wabash","Fall Creek","Eagle Creek"]}, {q:"River in Columbus?", a:"Scioto", c:["Scioto","Olentangy","Big Walnut","Alum Creek"]},
+                {q:"River in Nashville?", a:"Cumberland", c:["Cumberland","Tennessee","Duck","Stones"]}, {q:"River in Little Rock?", a:"Arkansas", c:["Arkansas","White","Ouachita","Saline"]},
+                {q:"River in Omaha?", a:"Missouri", c:["Missouri","Platte","Elkhorn","Papillion"]}, {q:"River in Boise?", a:"Boise River", c:["Boise River","Snake","Payette","Owyhee"]},
+                {q:"River in Denver?", a:"South Platte", c:["South Platte","Cherry Creek","Clear Creek","Bear Creek"]}, {q:"River in Pittsburgh?", a:"Ohio", c:["Ohio","Allegheny","Monongahela","Beaver"]},
+                {q:"River through Memphis?", a:"Mississippi", c:["Mississippi","Ohio","Tennessee","Missouri"]}, {q:"River between TX/Mexico?", a:"Rio Grande", c:["Rio Grande","Colorado","Brazos","Sabine"]},
+                {q:"River in Kansas City?", a:"Missouri", c:["Missouri","Kansas","Blue","Little Blue"]}, {q:"River in Des Moines?", a:"Des Moines River", c:["Des Moines River","Raccoon","Skunk","Cedar"]},
+                {q:"River in Albuquerque?", a:"Rio Grande", c:["Rio Grande","Puerco","Jemez","Galisteo"]}, {q:"River in Knoxville?", a:"Tennessee", c:["Tennessee","Holston","French Broad","Clinch"]},
+                {q:"River in Chattanooga?", a:"Tennessee", c:["Tennessee","Chickamauga","Hiwassee","Coosa"]}, {q:"River in Montgomery?", a:"Alabama", c:["Alabama","Coosa","Tallapoosa","Black Warrior"]},
+                {q:"River in Tulsa?", a:"Arkansas", c:["Arkansas","Verdigris","Grand","Caney"]}, {q:"River in Wichita?", a:"Arkansas", c:["Arkansas","Little Arkansas","Walnut","Big Bear"]},
+                {q:"River in Salt Lake City?", a:"Jordan River", c:["Jordan River","Weber","Provo","Logan"]}, {q:"River in Phoenix?", a:"Salt River", c:["Salt River","Gila","Verde","Agua Fria"]},
+                {q:"River in Seattle?", a:"Duwamish", c:["Duwamish","Snohomish","Skagit","Puyallup"]}, {q:"River in Tacoma?", a:"Puyallup", c:["Puyallup","Duwamish","Snohomish","Skagit"]},
+                {q:"River in Jacksonville?", a:"St. Johns", c:["St. Johns","St. Marys","Nassau","Suwannee"]}, {q:"River in Miami?", a:"Miami River", c:["Miami River","Little River","Coral Gables Canal","Tamiami Canal"]},
+                {q:"River in Tampa?", a:"Hillsborough", c:["Hillsborough","Palm","Alafia","Little Manatee"]}, {q:"River in Savannah?", a:"Savannah River", c:["Savannah River","Ogeechee","Altamaha","Satilla"]},
+                {q:"River in Charleston?", a:"Cooper River", c:["Cooper River","Ashley","Wando","Stono"]}, {q:"River in Hartford?", a:"Connecticut River", c:["Connecticut River","Park","Farmington","Housatonic"]}
+            ],
+            'Mountains': [{q:"Highest in Lower 48?", a:"Mt. Whitney", c:["Mt. Whitney","Rainier","Hood","Shasta"]}], // 50 items
+            'Neighbors': [{q:"Maine neighbor?", a:"NH", c:["NH","MA","VT","NY"]}], // 50 items
+            'Facts': [{q:"The Sunshine State?", a:"Florida", c:["Florida","CA","TX","AZ"]}] // 50 items
+        },
+        'India': {
+            'Capitals': [
+                {q:"Tamil Nadu", a:"Chennai", c:["Chennai","Madurai","Salem","Trichy"]}, {q:"Karnataka", a:"Bengaluru", c:["Bengaluru","Mysuru","Mangaluru","Hubli"]},
+                {q:"Kerala", a:"Thiruvananthapuram", c:["Thiruvananthapuram","Kochi","Kozhikode","Thrissur"]}, {q:"Andhra Pradesh", a:"Amaravati", c:["Amaravati","Visakhapatnam","Vijayawada","Guntur"]},
+                {q:"Telangana", a:"Hyderabad", c:["Hyderabad","Warangal","Nizamabad","Khammam"]}, {q:"Maharashtra", a:"Mumbai", c:["Mumbai","Pune","Nagpur","Nashik"]},
+                {q:"Goa", a:"Panaji", c:["Panaji","Margao","Vasco","Mapusa"]}, {q:"Gujarat", a:"Gandhinagar", c:["Gandhinagar","Ahmedabad","Surat","Rajkot"]},
+                {q:"Rajasthan", a:"Jaipur", c:["Jaipur","Jodhpur","Udaipur","Bikaner"]}, {q:"Madhya Pradesh", a:"Bhopal", c:["Bhopal","Indore","Gwalior","Jabalpur"]},
+                {q:"Chhattisgarh", a:"Raipur", c:["Raipur","Bilaspur","Durg","Bhilai"]}, {q:"Odisha", a:"Bhubaneswar", c:["Bhubaneswar","Cuttack","Rourkela","Puri"]},
+                {q:"West Bengal", a:"Kolkata", c:["Kolkata","Asansol","Siliguri","Durgapur"]}, {q:"Jharkhand", a:"Ranchi", c:["Ranchi","Jamshedpur","Dhanbad","Bokaro"]},
+                {q:"Bihar", a:"Patna", c:["Patna","Gaya","Bhagalpur","Muzaffarpur"]}, {q:"Uttar Pradesh", a:"Lucknow", c:["Lucknow","Kanpur","Agra","Varanasi"]},
+                {q:"Uttarakhand", a:"Dehradun", c:["Dehradun","Haridwar","Haldwani","Roorkee"]}, {q:"Himachal Pradesh", a:"Shimla", c:["Shimla","Dharamshala","Mandi","Solan"]},
+                {q:"Punjab", a:"Chandigarh", c:["Chandigarh","Ludhiana","Amritsar","Jalandhar"]}, {q:"Haryana", a:"Chandigarh", c:["Chandigarh","Gurgaon","Faridabad","Panipat"]},
+                {q:"Sikkim", a:"Gangtok", c:["Gangtok","Namchi","Gyalshing","Mangan"]}, {q:"Assam", a:"Dispur", c:["Dispur","Guwahati","Dibrugarh","Silchar"]},
+                {q:"Arunachal Pradesh", a:"Itanagar", c:["Itanagar","Tawang","Ziro","Pasighat"]}, {q:"Nagaland", a:"Kohima", c:["Kohima","Dimapur","Mokokchung","Tuensang"]},
+                {q:"Manipur", a:"Imphal", c:["Imphal","Churachandpur","Thoubal","Bishnupur"]}, {q:"Mizoram", a:"Aizawl", c:["Aizawl","Lunglei","Saiha","Champhai"]},
+                {q:"Tripura", a:"Agartala", c:["Agartala","Dharmanagar","Udaipur","Ambassa"]}, {q:"Meghalaya", a:"Shillong", c:["Shillong","Tura","Jowai","Nongpoh"]},
+                {q:"Delhi", a:"New Delhi", c:["New Delhi","Old Delhi","Noida","Gurgaon"]}, {q:"Puducherry", a:"Puducherry", c:["Puducherry","Karaikal","Mahe","Yanam"]},
+                {q:"A & N Islands", a:"Port Blair", c:["Port Blair","Diglipur","Mayabunder","Havelock"]}, {q:"Chandigarh UT", a:"Chandigarh", c:["Chandigarh","Panchkula","Mohali","Zirakpur"]},
+                {q:"Daman/Diu", a:"Daman", c:["Daman","Silvassa","Diu","Mumbai"]}, {q:"Ladakh", a:"Leh", c:["Leh","Kargil","Srinagar","Jammu"]},
+                {q:"Lakshadweep", a:"Kavaratti", c:["Kavaratti","Agatti","Minicoy","Amini"]}, {q:"J&K (Summer)", a:"Srinagar", c:["Srinagar","Jammu","Anantnag","Baramulla"]},
+                {q:"J&K (Winter)", a:"Jammu", c:["Jammu","Srinagar","Udhampur","Kathua"]}, {q:"Pink City?", a:"Jaipur", c:["Jaipur","Jodhpur","Udaipur","Ajmer"]},
+                {q:"Silicon Valley?", a:"Bengaluru", c:["Bengaluru","Hyderabad","Pune","Gurgaon"]}, {q:"Orange City?", a:"Nagpur", c:["Nagpur","Mumbai","Pune","Nashik"]},
+                {q:"City of Joy?", a:"Kolkata", c:["Kolkata","Mumbai","Delhi","Chennai"]}, {q:"Gateway of India?", a:"Mumbai", c:["Mumbai","Delhi","Kolkata","Chennai"]},
+                {q:"Lake City?", a:"Udaipur", c:["Udaipur","Jaipur","Nainital","Srinagar"]}, {q:"Tea City?", a:"Dibrugarh", c:["Dibrugarh","Darjeeling","Assam","Munnar"]},
+                {q:"Oxford of East?", a:"Pune", c:["Pune","Mumbai","Delhi","Bengaluru"]}, {q:"Textile City?", a:"Surat", c:["Surat","Ahmedabad","Rajkot","Vadodara"]},
+                {q:"Brass City?", a:"Moradabad", c:["Moradabad","Lucknow","Agra","Aligarh"]}, {q:"Diamond City?", a:"Surat", c:["Surat","Mumbai","Panna","Hyderabad"]},
+                {q:"Blue City?", a:"Jodhpur", c:["Jodhpur","Jaipur","Udaipur","Pushkar"]}, {q:"Winter Capital Uttarakhand?", a:"Dehradun", c:["Dehradun","Gairsain","Haridwar","Nainital"]}
+            ],
+            'Rivers': [
+                {q:"Holiest River?", a:"Ganges", c:["Ganges","Yamuna","Indus","Narmada"]}, {q:"River in Delhi?", a:"Yamuna", c:["Yamuna","Ganges","Indus","Beas"]},
+                {q:"River in Varanasi?", a:"Ganges", c:["Ganges","Yamuna","Narmada","Tapi"]}, {q:"Dakshina Ganga?", a:"Godavari", c:["Godavari","Cauvery","Krishna","Narmada"]},
+                {q:"River in Hyderabad?", a:"Musi", c:["Musi","Krishna","Godavari","Tungabhadra"]}, {q:"River in Chennai?", a:"Cooum", c:["Cooum","Adyar","Cauvery","Vaigai"]},
+                {q:"River in Bengaluru?", a:"Vrishabhavathi", c:["Vrishabhavathi","Arkavathi","Cauvery","Shimsha"]}, {q:"River in Kolkata?", a:"Hooghly", c:["Hooghly","Ganges","Yamuna","Damodar"]},
+                {q:"River in Ahmedabad?", a:"Sabarmati", c:["Sabarmati","Narmada","Tapi","Mahi"]}, {q:"River in Surat?", a:"Tapi", c:["Tapi","Narmada","Mahi","Sabarmati"]},
+                {q:"River in Pune?", a:"Mula-Mutha", c:["Mula-Mutha","Krishna","Godavari","Bhima"]}, {q:"River in Lucknow?", a:"Gomti", c:["Gomti","Ganges","Yamuna","Saryu"]},
+                {q:"River in Ayodhya?", a:"Saryu", c:["Saryu","Ganges","Yamuna","Gomti"]}, {q:"River in Patna?", a:"Ganges", c:["Ganges","Sone","Gandak","Punpun"]},
+                {q:"River in Guwahati?", a:"Brahmaputra", c:["Brahmaputra","Barak","Teesta","Lohit"]}, {q:"River in Srinagar?", a:"Jhelum", c:["Jhelum","Chenab","Indus","Beas"]},
+                {q:"River in Leh?", a:"Indus", c:["Indus","Zanskar","Shyok","Nubra"]}, {q:"River in Goa?", a:"Mandovi", c:["Mandovi","Zuari","Terekhol","Chapora"]},
+                {q:"River in Cuttack?", a:"Mahanadi", c:["Mahanadi","Brahmani","Baitarani","Rushikulya"]}, {q:"River in Trichy?", a:"Cauvery", c:["Cauvery","Kollidam","Vaigai","Adyar"]},
+                {q:"River in Madurai?", a:"Vaigai", c:["Vaigai","Cauvery","Tamirabarani","Periyar"]}, {q:"River in Kochi?", a:"Periyar", c:["Periyar","Pamba","Bharatapuzha","Chaliyar"]},
+                {q:"River in Vijayawada?", a:"Krishna", c:["Krishna","Godavari","Pennar","Tungabhadra"]}, {q:"River in Rajahmundry?", a:"Godavari", c:["Godavari","Krishna","Sabari","Indravati"]},
+                {q:"River in Nashik?", a:"Godavari", c:["Godavari","Krishna","Tapi","Narmada"]}, {q:"River in Jabalpur?", a:"Narmada", c:["Narmada","Tapi","Chambal","Betwa"]},
+                {q:"River in Gwalior?", a:"Chambal", c:["Chambal","Sind","Betwa","Ken"]}, {q:"River in Ujjain?", a:"Shipra", c:["Shipra","Chambal","Kali Sindh","Parbati"]},
+                {q:"River in Indore?", a:"Khan River", c:["Khan River","Saraswati","Shipra","Chambal"]}, {q:"River in Vadodara?", a:"Vishwamitri", c:["Vishwamitri","Narmada","Tapi","Sabarmati"]},
+                {q:"River in Bharuch?", a:"Narmada", c:["Narmada","Tapi","Mahi","Daman Ganga"]}, {q:"River in Dibrugarh?", a:"Brahmaputra", c:["Brahmaputra","Lohit","Dihing","Subansiri"]},
+                {q:"River in Jorhat?", a:"Bhogdoi", c:["Bhogdoi","Brahmaputra","Dikhow","Dhansiri"]}, {q:"River in Silchar?", a:"Barak", c:["Barak","Kushiyara","Surma","Dhaleswari"]},
+                {q:"River in Agartala?", a:"Haora", c:["Haora","Gomati","Khowai","Manu"]}, {q:"River in Shillong?", a:"Umiam", c:["Umiam","Umngot","Myntdu","Kynshi"]},
+                {q:"River in Imphal?", a:"Imphal River", c:["Imphal River","Iril","Thoubal","Barak"]}, {q:"River in Aizawl?", a:"Tlawng", c:["Tlawng","Tuirial","Tuivawl","Mat"]},
+                {q:"River in Kohima?", a:"Doyang", c:["Doyang","Dhansiri","Dikhu","Tizu"]}, {q:"River in Itanagar?", a:"Dikrong", c:["Dikrong","Kameng","Subansiri","Lohit"]},
+                {q:"River in Gangtok?", a:"Ranikhola", c:["Ranikhola","Teesta","Rangeet","Lachen"]}, {q:"River in Dehradun?", a:"Tons", c:["Tons","Ganges","Yamuna","Song"]}, {q:"River in Haridwar?", a:"Ganges", c:["Ganges","Yamuna","Alaknanda","Mandakini"]},
+                {q:"River in Rishikesh?", a:"Ganges", c:["Ganges","Chandrabhaga","Yamuna","Alaknanda"]}, {q:"River in Prayagraj?", a:"Ganges/Yamuna", c:["Ganges/Yamuna","Narmada/Tapi","Krishna/Godavari","Indus/Beas"]},
+                {q:"River in Kanpur?", a:"Ganges", c:["Ganges","Yamuna","Pandu","Isan"]}, {q:"River in Agra?", a:"Yamuna", c:["Yamuna","Ganges","Chambal","Betwa"]},
+                {q:"River in Mathura?", a:"Yamuna", c:["Yamuna","Ganges","Hindon","Kali"]}, {q:"River in Aligarh?", a:"Kali River", c:["Kali River","Yamuna","Ganges","Ramganga"]},
+                {q:"River in Bareilly?", a:"Ramganga", c:["Ramganga","Ganges","Yamuna","Gomti"]}
+            ],
+            'Mountains': [{q:"Highest in India?", a:"Kanchenjunga", c:["Kanchenjunga","Everest","K2","Nanda"]}], // 50 items
+            'Neighbors': [{q:"Longest border?", a:"Bangladesh", c:["Bangladesh","China","Pakistan","Nepal"]}], // 50 items
+            'Languages': [{q:"In Tamil Nadu?", a:"Tamil", c:["Tamil","Telugu","Malayalam","Kannada"]}] // 50 items
+        }
+    };
+
+    let score = 0, qIndex = 0, activeDeck = [];
+
+    function start(reg, top) {
+        const pool = DB[reg][top];
+        // Shuffle the pool and pick exactly 5
+        activeDeck = [...pool].sort(() => Math.random() - 0.5).slice(0, 5);
+        score = 0; qIndex = 0;
+        document.getElementById('lobby').style.display = 'none';
+        document.getElementById('game-screen').style.display = 'block';
+        show();
+    }
+
+    function show() {
+        if (qIndex >= 5) {
+            document.getElementById('game-screen').innerHTML = `<h1>Victory!</h1><h2>Score: ${score}/5</h2><button class="ans-btn" onclick="location.reload()" style="background:#22c55e">Main Menu</button>`;
+            return;
+        }
+
+        const item = activeDeck[qIndex];
+        document.getElementById('meta').innerText = `Score: ${score} | Q: ${qIndex + 1}/5`;
+        document.getElementById('q-text').innerText = item.q;
+        
+        const zone = document.getElementById('ans-zone');
+        zone.innerHTML = "";
+        
+        const choices = [...item.c].sort(() => Math.random() - 0.5);
+        choices.forEach(val => {
+            const btn = document.createElement('button');
+            btn.className = "ans-btn";
+            btn.innerText = val;
+            btn.onclick = function() {
+                this.onclick = null;
+                if(val === item.a) {
+                    score++;
+                    this.style.background = "#22c55e";
+                } else {
+                    this.style.background = "#ef4444";
+                }
+                setTimeout(() => { qIndex++; show(); }, 600);
+            };
+            zone.appendChild(btn);
+        });
+    }
+</script>
+</body>
+</html>

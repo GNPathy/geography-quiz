@@ -1,0 +1,3437 @@
+{
+  "World": {
+    "Capitals": [
+      {
+        "q": "France",
+        "a": "Paris",
+        "c": [
+          "Paris",
+          "Lyon",
+          "Nice",
+          "Marseille"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Japan",
+        "a": "Tokyo",
+        "c": [
+          "Tokyo",
+          "Kyoto",
+          "Osaka",
+          "Hiroshima"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "China",
+        "a": "Beijing",
+        "c": [
+          "Beijing",
+          "Shanghai",
+          "Xian",
+          "Wuhan"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Russia",
+        "a": "Moscow",
+        "c": [
+          "Moscow",
+          "Kazan",
+          "Sochi",
+          "St. Petersburg"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "UK",
+        "a": "London",
+        "c": [
+          "London",
+          "Manchester",
+          "Leeds",
+          "Liverpool"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Australia",
+        "a": "Canberra",
+        "c": [
+          "Canberra",
+          "Sydney",
+          "Melbourne",
+          "Perth"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Canada",
+        "a": "Ottawa",
+        "c": [
+          "Ottawa",
+          "Toronto",
+          "Montreal",
+          "Vancouver"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Brazil",
+        "a": "Brasilia",
+        "c": [
+          "Brasilia",
+          "Rio",
+          "Sao Paulo",
+          "Recife"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Egypt",
+        "a": "Cairo",
+        "c": [
+          "Cairo",
+          "Giza",
+          "Alexandria",
+          "Luxor"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Germany",
+        "a": "Berlin",
+        "c": [
+          "Berlin",
+          "Munich",
+          "Hamburg",
+          "Cologne"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Italy",
+        "a": "Rome",
+        "c": [
+          "Rome",
+          "Milan",
+          "Naples",
+          "Venice"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Spain",
+        "a": "Madrid",
+        "c": [
+          "Madrid",
+          "Barcelona",
+          "Valencia",
+          "Seville"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "South Korea",
+        "a": "Seoul",
+        "c": [
+          "Seoul",
+          "Busan",
+          "Incheon",
+          "Daegu"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Mexico",
+        "a": "Mexico City",
+        "c": [
+          "Mexico City",
+          "Tijuana",
+          "Cancun",
+          "Leon"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Argentina",
+        "a": "Buenos Aires",
+        "c": [
+          "Buenos Aires",
+          "Rosario",
+          "Mendoza",
+          "Salta"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Thailand",
+        "a": "Bangkok",
+        "c": [
+          "Bangkok",
+          "Phuket",
+          "Pattaya",
+          "Chiang Mai"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Norway",
+        "a": "Oslo",
+        "c": [
+          "Oslo",
+          "Bergen",
+          "Trondheim",
+          "Stavanger"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Greece",
+        "a": "Athens",
+        "c": [
+          "Athens",
+          "Patras",
+          "Larissa",
+          "Rhodes"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Turkey",
+        "a": "Ankara",
+        "c": [
+          "Ankara",
+          "Istanbul",
+          "Izmir",
+          "Antalya"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Sweden",
+        "a": "Stockholm",
+        "c": [
+          "Stockholm",
+          "Gothenburg",
+          "Malmo",
+          "Uppsala"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Portugal",
+        "a": "Lisbon",
+        "c": [
+          "Lisbon",
+          "Porto",
+          "Braga",
+          "Coimbra"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Netherlands",
+        "a": "Amsterdam",
+        "c": [
+          "Amsterdam",
+          "Rotterdam",
+          "Hague",
+          "Utrecht"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Switzerland",
+        "a": "Bern",
+        "c": [
+          "Bern",
+          "Zurich",
+          "Geneva",
+          "Basel"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Belgium",
+        "a": "Brussels",
+        "c": [
+          "Brussels",
+          "Antwerp",
+          "Ghent",
+          "Bruges"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Austria",
+        "a": "Vienna",
+        "c": [
+          "Vienna",
+          "Salzburg",
+          "Innsbruck",
+          "Graz"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Poland",
+        "a": "Warsaw",
+        "c": [
+          "Warsaw",
+          "Krakow",
+          "Wroclaw",
+          "Gdansk"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Denmark",
+        "a": "Copenhagen",
+        "c": [
+          "Copenhagen",
+          "Aarhus",
+          "Odense",
+          "Aalborg"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Finland",
+        "a": "Helsinki",
+        "c": [
+          "Helsinki",
+          "Espoo",
+          "Tampere",
+          "Vantaa"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Ireland",
+        "a": "Dublin",
+        "c": [
+          "Dublin",
+          "Cork",
+          "Galway",
+          "Limerick"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "New Zealand",
+        "a": "Wellington",
+        "c": [
+          "Wellington",
+          "Auckland",
+          "Christchurch",
+          "Hamilton"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "South Africa",
+        "a": "Pretoria",
+        "c": [
+          "Pretoria",
+          "Cape Town",
+          "Durban",
+          "Johannesburg"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "India",
+        "a": "New Delhi",
+        "c": [
+          "New Delhi",
+          "Mumbai",
+          "Kolkata",
+          "Bangalore"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Pakistan",
+        "a": "Islamabad",
+        "c": [
+          "Islamabad",
+          "Karachi",
+          "Lahore",
+          "Peshawar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Indonesia",
+        "a": "Jakarta",
+        "c": [
+          "Jakarta",
+          "Bali",
+          "Surabaya",
+          "Bandung"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Vietnam",
+        "a": "Hanoi",
+        "c": [
+          "Hanoi",
+          "Ho Chi Minh City",
+          "Da Nang",
+          "Hue"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Philippines",
+        "a": "Manila",
+        "c": [
+          "Manila",
+          "Cebu",
+          "Davao",
+          "Quezon"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Malaysia",
+        "a": "Kuala Lumpur",
+        "c": [
+          "Kuala Lumpur",
+          "Penang",
+          "Johor Bahru",
+          "Malacca"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Singapore",
+        "a": "Singapore",
+        "c": [
+          "Singapore",
+          "Kuala Lumpur",
+          "Jakarta",
+          "Bangkok"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Israel",
+        "a": "Jerusalem",
+        "c": [
+          "Jerusalem",
+          "Tel Aviv",
+          "Haifa",
+          "Ashdod"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Saudi Arabia",
+        "a": "Riyadh",
+        "c": [
+          "Riyadh",
+          "Jeddah",
+          "Mecca",
+          "Medina"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Iran",
+        "a": "Tehran",
+        "c": [
+          "Tehran",
+          "Mashhad",
+          "Isfahan",
+          "Tabriz"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Iraq",
+        "a": "Baghdad",
+        "c": [
+          "Baghdad",
+          "Basra",
+          "Mosul",
+          "Erbil"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Ukraine",
+        "a": "Kyiv",
+        "c": [
+          "Kyiv",
+          "Odesa",
+          "Lviv",
+          "Kharkiv"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Colombia",
+        "a": "Bogota",
+        "c": [
+          "Bogota",
+          "Medellin",
+          "Cali",
+          "Cartagena"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Peru",
+        "a": "Lima",
+        "c": [
+          "Lima",
+          "Cusco",
+          "Arequipa",
+          "Trujillo"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Chile",
+        "a": "Santiago",
+        "c": [
+          "Santiago",
+          "Valparaiso",
+          "Concepcion",
+          "Antofagasta"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Kenya",
+        "a": "Nairobi",
+        "c": [
+          "Nairobi",
+          "Mombasa",
+          "Kisumu",
+          "Nakuru"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Nigeria",
+        "a": "Abuja",
+        "c": [
+          "Abuja",
+          "Lagos",
+          "Kano",
+          "Ibadan"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Morocco",
+        "a": "Rabat",
+        "c": [
+          "Rabat",
+          "Casablanca",
+          "Marrakesh",
+          "Fes"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Cuba",
+        "a": "Havana",
+        "c": [
+          "Havana",
+          "Santiago",
+          "Camaguey",
+          "Holguin"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Rivers": [
+      {
+        "q": "Longest River?",
+        "a": "Nile",
+        "c": [
+          "Nile",
+          "Amazon",
+          "Yangtze",
+          "Mississippi"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Brazil?",
+        "a": "Amazon",
+        "c": [
+          "Amazon",
+          "Nile",
+          "Parana",
+          "Orinoco"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in London?",
+        "a": "Thames",
+        "c": [
+          "Thames",
+          "Seine",
+          "Rhine",
+          "Danube"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Paris?",
+        "a": "Seine",
+        "c": [
+          "Seine",
+          "Loire",
+          "Rhone",
+          "Thames"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Rome?",
+        "a": "Tiber",
+        "c": [
+          "Tiber",
+          "Po",
+          "Arno",
+          "Adige"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River through Germany?",
+        "a": "Rhine",
+        "c": [
+          "Rhine",
+          "Seine",
+          "Thames",
+          "Po"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River through Egypt?",
+        "a": "Nile",
+        "c": [
+          "Nile",
+          "Congo",
+          "Niger",
+          "Zambezi"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Longest in Europe?",
+        "a": "Volga",
+        "c": [
+          "Volga",
+          "Danube",
+          "Rhine",
+          "Elbe"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in NYC?",
+        "a": "Hudson",
+        "c": [
+          "Hudson",
+          "East River",
+          "Potomac",
+          "Charles"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in DC?",
+        "a": "Potomac",
+        "c": [
+          "Potomac",
+          "Delaware",
+          "Hudson",
+          "James"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Tokyo?",
+        "a": "Sumida",
+        "c": [
+          "Sumida",
+          "Tama",
+          "Arakawa",
+          "Edo"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Seoul?",
+        "a": "Han",
+        "c": [
+          "Han",
+          "Nakdong",
+          "Geum",
+          "Yeongsan"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Shanghai?",
+        "a": "Huangpu",
+        "c": [
+          "Huangpu",
+          "Yangtze",
+          "Pearl",
+          "Yellow"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Bangkok?",
+        "a": "Chao Phraya",
+        "c": [
+          "Chao Phraya",
+          "Mekong",
+          "Ping",
+          "Nan"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Vienna?",
+        "a": "Danube",
+        "c": [
+          "Danube",
+          "Inn",
+          "Mur",
+          "Drava"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Budapest?",
+        "a": "Danube",
+        "c": [
+          "Danube",
+          "Rhine",
+          "Elbe",
+          "Oder"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Baghdad?",
+        "a": "Tigris",
+        "c": [
+          "Tigris",
+          "Euphrates",
+          "Nile",
+          "Jordan"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Cairo?",
+        "a": "Nile",
+        "c": [
+          "Nile",
+          "Amazon",
+          "Mississippi",
+          "Yangtze"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Sea next to Italy?",
+        "a": "Adriatic",
+        "c": [
+          "Adriatic",
+          "Ionian",
+          "Tyrrhenian",
+          "Aegean"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Largest Ocean?",
+        "a": "Pacific",
+        "c": [
+          "Pacific",
+          "Atlantic",
+          "Indian",
+          "Arctic"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Portugal?",
+        "a": "Tagus",
+        "c": [
+          "Tagus",
+          "Douro",
+          "Guadiana",
+          "Minho"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Spain?",
+        "a": "Ebro",
+        "c": [
+          "Ebro",
+          "Tajo",
+          "Duero",
+          "Guadalquivir"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Switzerland?",
+        "a": "Aare",
+        "c": [
+          "Aare",
+          "Rhine",
+          "Rhone",
+          "Ticino"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Poland?",
+        "a": "Vistula",
+        "c": [
+          "Vistula",
+          "Oder",
+          "Warta",
+          "Bug"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Romania?",
+        "a": "Danube",
+        "c": [
+          "Danube",
+          "Olt",
+          "Prut",
+          "Mures"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Russia?",
+        "a": "Volga",
+        "c": [
+          "Volga",
+          "Lena",
+          "Ob",
+          "Yenisei"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Pakistan?",
+        "a": "Indus",
+        "c": [
+          "Indus",
+          "Ganges",
+          "Jhelum",
+          "Chenab"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Vietnam?",
+        "a": "Mekong",
+        "c": [
+          "Mekong",
+          "Red",
+          "Black",
+          "Perfume"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Cambodia?",
+        "a": "Mekong",
+        "c": [
+          "Mekong",
+          "Tonle Sap",
+          "Bassac",
+          "Sekong"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Iraq?",
+        "a": "Euphrates",
+        "c": [
+          "Euphrates",
+          "Tigris",
+          "Nile",
+          "Jordan"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Deepest Lake?",
+        "a": "Baikal",
+        "c": [
+          "Baikal",
+          "Superior",
+          "Victoria",
+          "Michigan"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Largest Salt Lake?",
+        "a": "Caspian Sea",
+        "c": [
+          "Caspian Sea",
+          "Aral Sea",
+          "Dead Sea",
+          "Great Salt Lake"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Ocean around India?",
+        "a": "Indian Ocean",
+        "c": [
+          "Indian Ocean",
+          "Pacific",
+          "Atlantic",
+          "Arctic"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Waterfall in USA/Canada?",
+        "a": "Niagara Falls",
+        "c": [
+          "Niagara Falls",
+          "Victoria Falls",
+          "Angel Falls",
+          "Iguazu Falls"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Highest Waterfall?",
+        "a": "Angel Falls",
+        "c": [
+          "Angel Falls",
+          "Niagara Falls",
+          "Tugela Falls",
+          "Yosemite Falls"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Sea between Europe/Africa?",
+        "a": "Mediterranean",
+        "c": [
+          "Mediterranean",
+          "Red Sea",
+          "Black Sea",
+          "Caspian"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Sea next to Greece?",
+        "a": "Aegean",
+        "c": [
+          "Aegean",
+          "Ionian",
+          "Adriatic",
+          "Mediterranean"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Sea north of Russia?",
+        "a": "Arctic Ocean",
+        "c": [
+          "Arctic Ocean",
+          "Pacific",
+          "Atlantic",
+          "Indian"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Laos?",
+        "a": "Mekong",
+        "c": [
+          "Mekong",
+          "Nam Ou",
+          "Nam Khan",
+          "Nam Ngum"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Turkey?",
+        "a": "Kizilirmak",
+        "c": [
+          "Kizilirmak",
+          "Euphrates",
+          "Tigris",
+          "Sakarya"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Ukraine?",
+        "a": "Dnipro",
+        "c": [
+          "Dnipro",
+          "Dniester",
+          "Donets",
+          "Bug"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Canada?",
+        "a": "St. Lawrence",
+        "c": [
+          "St. Lawrence",
+          "Yukon",
+          "Mackenzie",
+          "Fraser"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Nigeria?",
+        "a": "Niger",
+        "c": [
+          "Niger",
+          "Nile",
+          "Congo",
+          "Zambezi"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Congo?",
+        "a": "Congo",
+        "c": [
+          "Congo",
+          "Nile",
+          "Niger",
+          "Zambezi"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Argentina?",
+        "a": "Parana",
+        "c": [
+          "Parana",
+          "Amazon",
+          "Orinoco",
+          "Uruguay"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Colombia?",
+        "a": "Magdalena",
+        "c": [
+          "Magdalena",
+          "Amazon",
+          "Orinoco",
+          "Cauca"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Australia?",
+        "a": "Murray",
+        "c": [
+          "Murray",
+          "Darling",
+          "Murrumbidgee",
+          "Lachlan"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through South Africa?",
+        "a": "Orange",
+        "c": [
+          "Orange",
+          "Limpopo",
+          "Vaal",
+          "Fish"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through Iran?",
+        "a": "Karun",
+        "c": [
+          "Karun",
+          "Aras",
+          "Sefid-Rud",
+          "Zayandeh"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River through North Korea?",
+        "a": "Yalu",
+        "c": [
+          "Yalu",
+          "Taedong",
+          "Tumen",
+          "Chongchon"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Mountains": [
+      {
+        "q": "Highest Peak?",
+        "a": "Everest",
+        "c": [
+          "Everest",
+          "K2",
+          "Lhotse",
+          "Makalu"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Neighbors": [
+      {
+        "q": "North of USA?",
+        "a": "Canada",
+        "c": [
+          "Canada",
+          "Mexico",
+          "Cuba",
+          "Russia"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Languages": [
+      {
+        "q": "In Brazil?",
+        "a": "Portuguese",
+        "c": [
+          "Portuguese",
+          "Spanish",
+          "French",
+          "English"
+        ],
+        "difficulty": "novice"
+      }
+    ]
+  },
+  "USA": {
+    "Capitals": [
+      {
+        "q": "Alabama",
+        "a": "Montgomery",
+        "c": [
+          "Montgomery",
+          "Birmingham",
+          "Mobile",
+          "Huntsville"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Alaska",
+        "a": "Juneau",
+        "c": [
+          "Juneau",
+          "Anchorage",
+          "Fairbanks",
+          "Sitka"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Arizona",
+        "a": "Phoenix",
+        "c": [
+          "Phoenix",
+          "Tucson",
+          "Mesa",
+          "Chandler"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Arkansas",
+        "a": "Little Rock",
+        "c": [
+          "Little Rock",
+          "Fort Smith",
+          "Fayetteville",
+          "Springdale"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "California",
+        "a": "Sacramento",
+        "c": [
+          "Sacramento",
+          "LA",
+          "SF",
+          "San Diego"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Colorado",
+        "a": "Denver",
+        "c": [
+          "Denver",
+          "Colorado Springs",
+          "Aurora",
+          "Fort Collins"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Connecticut",
+        "a": "Hartford",
+        "c": [
+          "Hartford",
+          "Bridgeport",
+          "New Haven",
+          "Stamford"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Delaware",
+        "a": "Dover",
+        "c": [
+          "Dover",
+          "Wilmington",
+          "Newark",
+          "Middletown"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Florida",
+        "a": "Tallahassee",
+        "c": [
+          "Tallahassee",
+          "Miami",
+          "Tampa",
+          "Orlando"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Georgia",
+        "a": "Atlanta",
+        "c": [
+          "Atlanta",
+          "Augusta",
+          "Columbus",
+          "Macon"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Hawaii",
+        "a": "Honolulu",
+        "c": [
+          "Honolulu",
+          "Hilo",
+          "Kailua",
+          "Kaneohe"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Idaho",
+        "a": "Boise",
+        "c": [
+          "Boise",
+          "Meridian",
+          "Nampa",
+          "Idaho Falls"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Illinois",
+        "a": "Springfield",
+        "c": [
+          "Springfield",
+          "Chicago",
+          "Aurora",
+          "Joliet"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Indiana",
+        "a": "Indianapolis",
+        "c": [
+          "Indianapolis",
+          "Fort Wayne",
+          "Evansville",
+          "South Bend"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Iowa",
+        "a": "Des Moines",
+        "c": [
+          "Des Moines",
+          "Cedar Rapids",
+          "Davenport",
+          "Sioux City"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Kansas",
+        "a": "Topeka",
+        "c": [
+          "Topeka",
+          "Wichita",
+          "Overland Park",
+          "Kansas City"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Kentucky",
+        "a": "Frankfort",
+        "c": [
+          "Frankfort",
+          "Louisville",
+          "Lexington",
+          "Bowling Green"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Louisiana",
+        "a": "Baton Rouge",
+        "c": [
+          "Baton Rouge",
+          "New Orleans",
+          "Shreveport",
+          "Lafayette"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Maine",
+        "a": "Augusta",
+        "c": [
+          "Augusta",
+          "Portland",
+          "Lewiston",
+          "Bangor"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Maryland",
+        "a": "Annapolis",
+        "c": [
+          "Annapolis",
+          "Baltimore",
+          "Frederick",
+          "Rockville"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Massachusetts",
+        "a": "Boston",
+        "c": [
+          "Boston",
+          "Worcester",
+          "Springfield",
+          "Cambridge"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Michigan",
+        "a": "Lansing",
+        "c": [
+          "Lansing",
+          "Detroit",
+          "Grand Rapids",
+          "Warren"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Minnesota",
+        "a": "St. Paul",
+        "c": [
+          "St. Paul",
+          "Minneapolis",
+          "Rochester",
+          "Duluth"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Mississippi",
+        "a": "Jackson",
+        "c": [
+          "Jackson",
+          "Gulfport",
+          "Southaven",
+          "Biloxi"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Missouri",
+        "a": "Jefferson City",
+        "c": [
+          "Jefferson City",
+          "Kansas City",
+          "St. Louis",
+          "Springfield"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Montana",
+        "a": "Helena",
+        "c": [
+          "Helena",
+          "Billings",
+          "Missoula",
+          "Great Falls"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Nebraska",
+        "a": "Lincoln",
+        "c": [
+          "Lincoln",
+          "Omaha",
+          "Bellevue",
+          "Grand Island"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Nevada",
+        "a": "Carson City",
+        "c": [
+          "Carson City",
+          "Las Vegas",
+          "Henderson",
+          "Reno"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "New Hampshire",
+        "a": "Concord",
+        "c": [
+          "Concord",
+          "Manchester",
+          "Nashua",
+          "Derry"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "New Jersey",
+        "a": "Trenton",
+        "c": [
+          "Trenton",
+          "Newark",
+          "Jersey City",
+          "Paterson"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "New Mexico",
+        "a": "Santa Fe",
+        "c": [
+          "Santa Fe",
+          "Albuquerque",
+          "Las Cruces",
+          "Rio Rancho"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "New York",
+        "a": "Albany",
+        "c": [
+          "Albany",
+          "NYC",
+          "Buffalo",
+          "Rochester"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "North Carolina",
+        "a": "Raleigh",
+        "c": [
+          "Raleigh",
+          "Charlotte",
+          "Greensboro",
+          "Durham"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "North Dakota",
+        "a": "Bismarck",
+        "c": [
+          "Bismarck",
+          "Fargo",
+          "Grand Forks",
+          "Minot"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Ohio",
+        "a": "Columbus",
+        "c": [
+          "Columbus",
+          "Cleveland",
+          "Cincinnati",
+          "Toledo"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Oklahoma",
+        "a": "Oklahoma City",
+        "c": [
+          "Oklahoma City",
+          "Tulsa",
+          "Norman",
+          "Broken Arrow"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Oregon",
+        "a": "Salem",
+        "c": [
+          "Salem",
+          "Portland",
+          "Eugene",
+          "Gresham"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Pennsylvania",
+        "a": "Harrisburg",
+        "c": [
+          "Harrisburg",
+          "Philadelphia",
+          "Pittsburgh",
+          "Allentown"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Rhode Island",
+        "a": "Providence",
+        "c": [
+          "Providence",
+          "Warwick",
+          "Cranston",
+          "Pawtucket"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "South Carolina",
+        "a": "Columbia",
+        "c": [
+          "Columbia",
+          "Charleston",
+          "North Charleston",
+          "Mount Pleasant"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "South Dakota",
+        "a": "Pierre",
+        "c": [
+          "Pierre",
+          "Sioux Falls",
+          "Rapid City",
+          "Aberdeen"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Tennessee",
+        "a": "Nashville",
+        "c": [
+          "Nashville",
+          "Memphis",
+          "Knoxville",
+          "Chattanooga"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Texas",
+        "a": "Austin",
+        "c": [
+          "Austin",
+          "Houston",
+          "Dallas",
+          "San Antonio"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Utah",
+        "a": "Salt Lake City",
+        "c": [
+          "Salt Lake City",
+          "West Valley City",
+          "Provo",
+          "West Jordan"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Vermont",
+        "a": "Montpelier",
+        "c": [
+          "Montpelier",
+          "Burlington",
+          "South Burlington",
+          "Rutland"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Virginia",
+        "a": "Richmond",
+        "c": [
+          "Richmond",
+          "Virginia Beach",
+          "Norfolk",
+          "Chesapeake"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Washington",
+        "a": "Olympia",
+        "c": [
+          "Olympia",
+          "Seattle",
+          "Spokane",
+          "Tacoma"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "West Virginia",
+        "a": "Charleston",
+        "c": [
+          "Charleston",
+          "Huntington",
+          "Morgantown",
+          "Parkersburg"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Wisconsin",
+        "a": "Madison",
+        "c": [
+          "Madison",
+          "Milwaukee",
+          "Green Bay",
+          "Kenosha"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Wyoming",
+        "a": "Cheyenne",
+        "c": [
+          "Cheyenne",
+          "Casper",
+          "Laramie",
+          "Gillette"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Rivers": [
+      {
+        "q": "River in Grand Canyon?",
+        "a": "Colorado",
+        "c": [
+          "Colorado",
+          "Rio Grande",
+          "Green",
+          "San Juan"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Longest in USA?",
+        "a": "Missouri",
+        "c": [
+          "Missouri",
+          "Mississippi",
+          "Yukon",
+          "Rio Grande"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in NYC?",
+        "a": "Hudson",
+        "c": [
+          "Hudson",
+          "East River",
+          "Delaware",
+          "Passaic"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in DC?",
+        "a": "Potomac",
+        "c": [
+          "Potomac",
+          "Anacostia",
+          "Patuxent",
+          "Rappahannock"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Philly?",
+        "a": "Schuylkill",
+        "c": [
+          "Schuylkill",
+          "Delaware",
+          "Susquehanna",
+          "Lehigh"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Boston?",
+        "a": "Charles",
+        "c": [
+          "Charles",
+          "Mystic",
+          "Neponset",
+          "Merrimack"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Austin?",
+        "a": "Colorado",
+        "c": [
+          "Colorado",
+          "Brazos",
+          "Trinity",
+          "Guadalupe"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Sacramento?",
+        "a": "Sacramento River",
+        "c": [
+          "Sacramento River",
+          "American",
+          "San Joaquin",
+          "Feather"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Portland?",
+        "a": "Willamette",
+        "c": [
+          "Willamette",
+          "Columbia",
+          "Sandy",
+          "Clackamas"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Chicago?",
+        "a": "Chicago River",
+        "c": [
+          "Chicago River",
+          "Des Plaines",
+          "Calumet",
+          "Illinois"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River through New Orleans?",
+        "a": "Mississippi",
+        "c": [
+          "Mississippi",
+          "Red",
+          "Arkansas",
+          "Atchafalaya"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River through St. Louis?",
+        "a": "Mississippi",
+        "c": [
+          "Mississippi",
+          "Missouri",
+          "Meramec",
+          "Illinois"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Lake in Chicago?",
+        "a": "Lake Michigan",
+        "c": [
+          "Lake Michigan",
+          "Superior",
+          "Huron",
+          "Erie"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Largest Great Lake?",
+        "a": "Lake Superior",
+        "c": [
+          "Lake Superior",
+          "Michigan",
+          "Huron",
+          "Ontario"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Shallowest Great Lake?",
+        "a": "Lake Erie",
+        "c": [
+          "Lake Erie",
+          "Ontario",
+          "Michigan",
+          "Huron"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Lake in Salt Lake City?",
+        "a": "Great Salt Lake",
+        "c": [
+          "Great Salt Lake",
+          "Utah Lake",
+          "Bear Lake",
+          "Sevier Lake"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Lake in Florida?",
+        "a": "Okeechobee",
+        "c": [
+          "Okeechobee",
+          "George",
+          "Kissimmee",
+          "Apopka"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Alaska?",
+        "a": "Yukon",
+        "c": [
+          "Yukon",
+          "Kuskokwim",
+          "Copper",
+          "Tanana"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Idaho?",
+        "a": "Snake",
+        "c": [
+          "Snake",
+          "Salmon",
+          "Clearwater",
+          "Payette"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Georgia?",
+        "a": "Chattahoochee",
+        "c": [
+          "Chattahoochee",
+          "Savannah",
+          "Altamaha",
+          "Flint"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Richmond?",
+        "a": "James",
+        "c": [
+          "James",
+          "York",
+          "Potomac",
+          "Rappahannock"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Cincinnati?",
+        "a": "Ohio",
+        "c": [
+          "Ohio",
+          "Licking",
+          "Miami",
+          "Scioto"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Indianapolis?",
+        "a": "White River",
+        "c": [
+          "White River",
+          "Wabash",
+          "Fall Creek",
+          "Eagle Creek"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Columbus?",
+        "a": "Scioto",
+        "c": [
+          "Scioto",
+          "Olentangy",
+          "Big Walnut",
+          "Alum Creek"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Nashville?",
+        "a": "Cumberland",
+        "c": [
+          "Cumberland",
+          "Tennessee",
+          "Duck",
+          "Stones"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Little Rock?",
+        "a": "Arkansas",
+        "c": [
+          "Arkansas",
+          "White",
+          "Ouachita",
+          "Saline"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Omaha?",
+        "a": "Missouri",
+        "c": [
+          "Missouri",
+          "Platte",
+          "Elkhorn",
+          "Papillion"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Boise?",
+        "a": "Boise River",
+        "c": [
+          "Boise River",
+          "Snake",
+          "Payette",
+          "Owyhee"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Denver?",
+        "a": "South Platte",
+        "c": [
+          "South Platte",
+          "Cherry Creek",
+          "Clear Creek",
+          "Bear Creek"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Pittsburgh?",
+        "a": "Ohio",
+        "c": [
+          "Ohio",
+          "Allegheny",
+          "Monongahela",
+          "Beaver"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River through Memphis?",
+        "a": "Mississippi",
+        "c": [
+          "Mississippi",
+          "Ohio",
+          "Tennessee",
+          "Missouri"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River between TX/Mexico?",
+        "a": "Rio Grande",
+        "c": [
+          "Rio Grande",
+          "Colorado",
+          "Brazos",
+          "Sabine"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Kansas City?",
+        "a": "Missouri",
+        "c": [
+          "Missouri",
+          "Kansas",
+          "Blue",
+          "Little Blue"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Des Moines?",
+        "a": "Des Moines River",
+        "c": [
+          "Des Moines River",
+          "Raccoon",
+          "Skunk",
+          "Cedar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Albuquerque?",
+        "a": "Rio Grande",
+        "c": [
+          "Rio Grande",
+          "Puerco",
+          "Jemez",
+          "Galisteo"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Knoxville?",
+        "a": "Tennessee",
+        "c": [
+          "Tennessee",
+          "Holston",
+          "French Broad",
+          "Clinch"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Chattanooga?",
+        "a": "Tennessee",
+        "c": [
+          "Tennessee",
+          "Chickamauga",
+          "Hiwassee",
+          "Coosa"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Montgomery?",
+        "a": "Alabama",
+        "c": [
+          "Alabama",
+          "Coosa",
+          "Tallapoosa",
+          "Black Warrior"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Tulsa?",
+        "a": "Arkansas",
+        "c": [
+          "Arkansas",
+          "Verdigris",
+          "Grand",
+          "Caney"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Wichita?",
+        "a": "Arkansas",
+        "c": [
+          "Arkansas",
+          "Little Arkansas",
+          "Walnut",
+          "Big Bear"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Salt Lake City?",
+        "a": "Jordan River",
+        "c": [
+          "Jordan River",
+          "Weber",
+          "Provo",
+          "Logan"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Phoenix?",
+        "a": "Salt River",
+        "c": [
+          "Salt River",
+          "Gila",
+          "Verde",
+          "Agua Fria"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Seattle?",
+        "a": "Duwamish",
+        "c": [
+          "Duwamish",
+          "Snohomish",
+          "Skagit",
+          "Puyallup"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Tacoma?",
+        "a": "Puyallup",
+        "c": [
+          "Puyallup",
+          "Duwamish",
+          "Snohomish",
+          "Skagit"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Jacksonville?",
+        "a": "St. Johns",
+        "c": [
+          "St. Johns",
+          "St. Marys",
+          "Nassau",
+          "Suwannee"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Miami?",
+        "a": "Miami River",
+        "c": [
+          "Miami River",
+          "Little River",
+          "Coral Gables Canal",
+          "Tamiami Canal"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Tampa?",
+        "a": "Hillsborough",
+        "c": [
+          "Hillsborough",
+          "Palm",
+          "Alafia",
+          "Little Manatee"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Savannah?",
+        "a": "Savannah River",
+        "c": [
+          "Savannah River",
+          "Ogeechee",
+          "Altamaha",
+          "Satilla"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Charleston?",
+        "a": "Cooper River",
+        "c": [
+          "Cooper River",
+          "Ashley",
+          "Wando",
+          "Stono"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Hartford?",
+        "a": "Connecticut River",
+        "c": [
+          "Connecticut River",
+          "Park",
+          "Farmington",
+          "Housatonic"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Mountains": [
+      {
+        "q": "Highest in Lower 48?",
+        "a": "Mt. Whitney",
+        "c": [
+          "Mt. Whitney",
+          "Rainier",
+          "Hood",
+          "Shasta"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Neighbors": [
+      {
+        "q": "Maine neighbor?",
+        "a": "NH",
+        "c": [
+          "NH",
+          "MA",
+          "VT",
+          "NY"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Facts": [
+      {
+        "q": "The Sunshine State?",
+        "a": "Florida",
+        "c": [
+          "Florida",
+          "CA",
+          "TX",
+          "AZ"
+        ],
+        "difficulty": "novice"
+      }
+    ]
+  },
+  "India": {
+    "Capitals": [
+      {
+        "q": "Tamil Nadu",
+        "a": "Chennai",
+        "c": [
+          "Chennai",
+          "Madurai",
+          "Salem",
+          "Trichy"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Karnataka",
+        "a": "Bengaluru",
+        "c": [
+          "Bengaluru",
+          "Mysuru",
+          "Mangaluru",
+          "Hubli"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Kerala",
+        "a": "Thiruvananthapuram",
+        "c": [
+          "Thiruvananthapuram",
+          "Kochi",
+          "Kozhikode",
+          "Thrissur"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Andhra Pradesh",
+        "a": "Amaravati",
+        "c": [
+          "Amaravati",
+          "Visakhapatnam",
+          "Vijayawada",
+          "Guntur"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Telangana",
+        "a": "Hyderabad",
+        "c": [
+          "Hyderabad",
+          "Warangal",
+          "Nizamabad",
+          "Khammam"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Maharashtra",
+        "a": "Mumbai",
+        "c": [
+          "Mumbai",
+          "Pune",
+          "Nagpur",
+          "Nashik"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Goa",
+        "a": "Panaji",
+        "c": [
+          "Panaji",
+          "Margao",
+          "Vasco",
+          "Mapusa"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Gujarat",
+        "a": "Gandhinagar",
+        "c": [
+          "Gandhinagar",
+          "Ahmedabad",
+          "Surat",
+          "Rajkot"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Rajasthan",
+        "a": "Jaipur",
+        "c": [
+          "Jaipur",
+          "Jodhpur",
+          "Udaipur",
+          "Bikaner"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Madhya Pradesh",
+        "a": "Bhopal",
+        "c": [
+          "Bhopal",
+          "Indore",
+          "Gwalior",
+          "Jabalpur"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Chhattisgarh",
+        "a": "Raipur",
+        "c": [
+          "Raipur",
+          "Bilaspur",
+          "Durg",
+          "Bhilai"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Odisha",
+        "a": "Bhubaneswar",
+        "c": [
+          "Bhubaneswar",
+          "Cuttack",
+          "Rourkela",
+          "Puri"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "West Bengal",
+        "a": "Kolkata",
+        "c": [
+          "Kolkata",
+          "Asansol",
+          "Siliguri",
+          "Durgapur"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Jharkhand",
+        "a": "Ranchi",
+        "c": [
+          "Ranchi",
+          "Jamshedpur",
+          "Dhanbad",
+          "Bokaro"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Bihar",
+        "a": "Patna",
+        "c": [
+          "Patna",
+          "Gaya",
+          "Bhagalpur",
+          "Muzaffarpur"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Uttar Pradesh",
+        "a": "Lucknow",
+        "c": [
+          "Lucknow",
+          "Kanpur",
+          "Agra",
+          "Varanasi"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Uttarakhand",
+        "a": "Dehradun",
+        "c": [
+          "Dehradun",
+          "Haridwar",
+          "Haldwani",
+          "Roorkee"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Himachal Pradesh",
+        "a": "Shimla",
+        "c": [
+          "Shimla",
+          "Dharamshala",
+          "Mandi",
+          "Solan"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Punjab",
+        "a": "Chandigarh",
+        "c": [
+          "Chandigarh",
+          "Ludhiana",
+          "Amritsar",
+          "Jalandhar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Haryana",
+        "a": "Chandigarh",
+        "c": [
+          "Chandigarh",
+          "Gurgaon",
+          "Faridabad",
+          "Panipat"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Sikkim",
+        "a": "Gangtok",
+        "c": [
+          "Gangtok",
+          "Namchi",
+          "Gyalshing",
+          "Mangan"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Assam",
+        "a": "Dispur",
+        "c": [
+          "Dispur",
+          "Guwahati",
+          "Dibrugarh",
+          "Silchar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Arunachal Pradesh",
+        "a": "Itanagar",
+        "c": [
+          "Itanagar",
+          "Tawang",
+          "Ziro",
+          "Pasighat"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Nagaland",
+        "a": "Kohima",
+        "c": [
+          "Kohima",
+          "Dimapur",
+          "Mokokchung",
+          "Tuensang"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Manipur",
+        "a": "Imphal",
+        "c": [
+          "Imphal",
+          "Churachandpur",
+          "Thoubal",
+          "Bishnupur"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Mizoram",
+        "a": "Aizawl",
+        "c": [
+          "Aizawl",
+          "Lunglei",
+          "Saiha",
+          "Champhai"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Tripura",
+        "a": "Agartala",
+        "c": [
+          "Agartala",
+          "Dharmanagar",
+          "Udaipur",
+          "Ambassa"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Meghalaya",
+        "a": "Shillong",
+        "c": [
+          "Shillong",
+          "Tura",
+          "Jowai",
+          "Nongpoh"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Delhi",
+        "a": "New Delhi",
+        "c": [
+          "New Delhi",
+          "Old Delhi",
+          "Noida",
+          "Gurgaon"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Puducherry",
+        "a": "Puducherry",
+        "c": [
+          "Puducherry",
+          "Karaikal",
+          "Mahe",
+          "Yanam"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "A & N Islands",
+        "a": "Port Blair",
+        "c": [
+          "Port Blair",
+          "Diglipur",
+          "Mayabunder",
+          "Havelock"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Chandigarh UT",
+        "a": "Chandigarh",
+        "c": [
+          "Chandigarh",
+          "Panchkula",
+          "Mohali",
+          "Zirakpur"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Daman/Diu",
+        "a": "Daman",
+        "c": [
+          "Daman",
+          "Silvassa",
+          "Diu",
+          "Mumbai"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Ladakh",
+        "a": "Leh",
+        "c": [
+          "Leh",
+          "Kargil",
+          "Srinagar",
+          "Jammu"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "Lakshadweep",
+        "a": "Kavaratti",
+        "c": [
+          "Kavaratti",
+          "Agatti",
+          "Minicoy",
+          "Amini"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "J&K (Summer)",
+        "a": "Srinagar",
+        "c": [
+          "Srinagar",
+          "Jammu",
+          "Anantnag",
+          "Baramulla"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "J&K (Winter)",
+        "a": "Jammu",
+        "c": [
+          "Jammu",
+          "Srinagar",
+          "Udhampur",
+          "Kathua"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Pink City?",
+        "a": "Jaipur",
+        "c": [
+          "Jaipur",
+          "Jodhpur",
+          "Udaipur",
+          "Ajmer"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Silicon Valley?",
+        "a": "Bengaluru",
+        "c": [
+          "Bengaluru",
+          "Hyderabad",
+          "Pune",
+          "Gurgaon"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Orange City?",
+        "a": "Nagpur",
+        "c": [
+          "Nagpur",
+          "Mumbai",
+          "Pune",
+          "Nashik"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "City of Joy?",
+        "a": "Kolkata",
+        "c": [
+          "Kolkata",
+          "Mumbai",
+          "Delhi",
+          "Chennai"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Gateway of India?",
+        "a": "Mumbai",
+        "c": [
+          "Mumbai",
+          "Delhi",
+          "Kolkata",
+          "Chennai"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Lake City?",
+        "a": "Udaipur",
+        "c": [
+          "Udaipur",
+          "Jaipur",
+          "Nainital",
+          "Srinagar"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Tea City?",
+        "a": "Dibrugarh",
+        "c": [
+          "Dibrugarh",
+          "Darjeeling",
+          "Assam",
+          "Munnar"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Oxford of East?",
+        "a": "Pune",
+        "c": [
+          "Pune",
+          "Mumbai",
+          "Delhi",
+          "Bengaluru"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Textile City?",
+        "a": "Surat",
+        "c": [
+          "Surat",
+          "Ahmedabad",
+          "Rajkot",
+          "Vadodara"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Brass City?",
+        "a": "Moradabad",
+        "c": [
+          "Moradabad",
+          "Lucknow",
+          "Agra",
+          "Aligarh"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Diamond City?",
+        "a": "Surat",
+        "c": [
+          "Surat",
+          "Mumbai",
+          "Panna",
+          "Hyderabad"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Blue City?",
+        "a": "Jodhpur",
+        "c": [
+          "Jodhpur",
+          "Jaipur",
+          "Udaipur",
+          "Pushkar"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "Winter Capital Uttarakhand?",
+        "a": "Dehradun",
+        "c": [
+          "Dehradun",
+          "Gairsain",
+          "Haridwar",
+          "Nainital"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Rivers": [
+      {
+        "q": "Holiest River?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Yamuna",
+          "Indus",
+          "Narmada"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Delhi?",
+        "a": "Yamuna",
+        "c": [
+          "Yamuna",
+          "Ganges",
+          "Indus",
+          "Beas"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Varanasi?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Yamuna",
+          "Narmada",
+          "Tapi"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "Dakshina Ganga?",
+        "a": "Godavari",
+        "c": [
+          "Godavari",
+          "Cauvery",
+          "Krishna",
+          "Narmada"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Hyderabad?",
+        "a": "Musi",
+        "c": [
+          "Musi",
+          "Krishna",
+          "Godavari",
+          "Tungabhadra"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Chennai?",
+        "a": "Cooum",
+        "c": [
+          "Cooum",
+          "Adyar",
+          "Cauvery",
+          "Vaigai"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Bengaluru?",
+        "a": "Vrishabhavathi",
+        "c": [
+          "Vrishabhavathi",
+          "Arkavathi",
+          "Cauvery",
+          "Shimsha"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Kolkata?",
+        "a": "Hooghly",
+        "c": [
+          "Hooghly",
+          "Ganges",
+          "Yamuna",
+          "Damodar"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Ahmedabad?",
+        "a": "Sabarmati",
+        "c": [
+          "Sabarmati",
+          "Narmada",
+          "Tapi",
+          "Mahi"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Surat?",
+        "a": "Tapi",
+        "c": [
+          "Tapi",
+          "Narmada",
+          "Mahi",
+          "Sabarmati"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Pune?",
+        "a": "Mula-Mutha",
+        "c": [
+          "Mula-Mutha",
+          "Krishna",
+          "Godavari",
+          "Bhima"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Lucknow?",
+        "a": "Gomti",
+        "c": [
+          "Gomti",
+          "Ganges",
+          "Yamuna",
+          "Saryu"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Ayodhya?",
+        "a": "Saryu",
+        "c": [
+          "Saryu",
+          "Ganges",
+          "Yamuna",
+          "Gomti"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Patna?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Sone",
+          "Gandak",
+          "Punpun"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Guwahati?",
+        "a": "Brahmaputra",
+        "c": [
+          "Brahmaputra",
+          "Barak",
+          "Teesta",
+          "Lohit"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Srinagar?",
+        "a": "Jhelum",
+        "c": [
+          "Jhelum",
+          "Chenab",
+          "Indus",
+          "Beas"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Leh?",
+        "a": "Indus",
+        "c": [
+          "Indus",
+          "Zanskar",
+          "Shyok",
+          "Nubra"
+        ],
+        "difficulty": "novice"
+      },
+      {
+        "q": "River in Goa?",
+        "a": "Mandovi",
+        "c": [
+          "Mandovi",
+          "Zuari",
+          "Terekhol",
+          "Chapora"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Cuttack?",
+        "a": "Mahanadi",
+        "c": [
+          "Mahanadi",
+          "Brahmani",
+          "Baitarani",
+          "Rushikulya"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Trichy?",
+        "a": "Cauvery",
+        "c": [
+          "Cauvery",
+          "Kollidam",
+          "Vaigai",
+          "Adyar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Madurai?",
+        "a": "Vaigai",
+        "c": [
+          "Vaigai",
+          "Cauvery",
+          "Tamirabarani",
+          "Periyar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Kochi?",
+        "a": "Periyar",
+        "c": [
+          "Periyar",
+          "Pamba",
+          "Bharatapuzha",
+          "Chaliyar"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Vijayawada?",
+        "a": "Krishna",
+        "c": [
+          "Krishna",
+          "Godavari",
+          "Pennar",
+          "Tungabhadra"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Rajahmundry?",
+        "a": "Godavari",
+        "c": [
+          "Godavari",
+          "Krishna",
+          "Sabari",
+          "Indravati"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Nashik?",
+        "a": "Godavari",
+        "c": [
+          "Godavari",
+          "Krishna",
+          "Tapi",
+          "Narmada"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Jabalpur?",
+        "a": "Narmada",
+        "c": [
+          "Narmada",
+          "Tapi",
+          "Chambal",
+          "Betwa"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Gwalior?",
+        "a": "Chambal",
+        "c": [
+          "Chambal",
+          "Sind",
+          "Betwa",
+          "Ken"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Ujjain?",
+        "a": "Shipra",
+        "c": [
+          "Shipra",
+          "Chambal",
+          "Kali Sindh",
+          "Parbati"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Indore?",
+        "a": "Khan River",
+        "c": [
+          "Khan River",
+          "Saraswati",
+          "Shipra",
+          "Chambal"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Vadodara?",
+        "a": "Vishwamitri",
+        "c": [
+          "Vishwamitri",
+          "Narmada",
+          "Tapi",
+          "Sabarmati"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Bharuch?",
+        "a": "Narmada",
+        "c": [
+          "Narmada",
+          "Tapi",
+          "Mahi",
+          "Daman Ganga"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Dibrugarh?",
+        "a": "Brahmaputra",
+        "c": [
+          "Brahmaputra",
+          "Lohit",
+          "Dihing",
+          "Subansiri"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Jorhat?",
+        "a": "Bhogdoi",
+        "c": [
+          "Bhogdoi",
+          "Brahmaputra",
+          "Dikhow",
+          "Dhansiri"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Silchar?",
+        "a": "Barak",
+        "c": [
+          "Barak",
+          "Kushiyara",
+          "Surma",
+          "Dhaleswari"
+        ],
+        "difficulty": "intermediate"
+      },
+      {
+        "q": "River in Agartala?",
+        "a": "Haora",
+        "c": [
+          "Haora",
+          "Gomati",
+          "Khowai",
+          "Manu"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Shillong?",
+        "a": "Umiam",
+        "c": [
+          "Umiam",
+          "Umngot",
+          "Myntdu",
+          "Kynshi"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Imphal?",
+        "a": "Imphal River",
+        "c": [
+          "Imphal River",
+          "Iril",
+          "Thoubal",
+          "Barak"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Aizawl?",
+        "a": "Tlawng",
+        "c": [
+          "Tlawng",
+          "Tuirial",
+          "Tuivawl",
+          "Mat"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Kohima?",
+        "a": "Doyang",
+        "c": [
+          "Doyang",
+          "Dhansiri",
+          "Dikhu",
+          "Tizu"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Itanagar?",
+        "a": "Dikrong",
+        "c": [
+          "Dikrong",
+          "Kameng",
+          "Subansiri",
+          "Lohit"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Gangtok?",
+        "a": "Ranikhola",
+        "c": [
+          "Ranikhola",
+          "Teesta",
+          "Rangeet",
+          "Lachen"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Dehradun?",
+        "a": "Tons",
+        "c": [
+          "Tons",
+          "Ganges",
+          "Yamuna",
+          "Song"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Haridwar?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Yamuna",
+          "Alaknanda",
+          "Mandakini"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Rishikesh?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Chandrabhaga",
+          "Yamuna",
+          "Alaknanda"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Prayagraj?",
+        "a": "Ganges/Yamuna",
+        "c": [
+          "Ganges/Yamuna",
+          "Narmada/Tapi",
+          "Krishna/Godavari",
+          "Indus/Beas"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Kanpur?",
+        "a": "Ganges",
+        "c": [
+          "Ganges",
+          "Yamuna",
+          "Pandu",
+          "Isan"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Agra?",
+        "a": "Yamuna",
+        "c": [
+          "Yamuna",
+          "Ganges",
+          "Chambal",
+          "Betwa"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Mathura?",
+        "a": "Yamuna",
+        "c": [
+          "Yamuna",
+          "Ganges",
+          "Hindon",
+          "Kali"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Aligarh?",
+        "a": "Kali River",
+        "c": [
+          "Kali River",
+          "Yamuna",
+          "Ganges",
+          "Ramganga"
+        ],
+        "difficulty": "expert"
+      },
+      {
+        "q": "River in Bareilly?",
+        "a": "Ramganga",
+        "c": [
+          "Ramganga",
+          "Ganges",
+          "Yamuna",
+          "Gomti"
+        ],
+        "difficulty": "expert"
+      }
+    ],
+    "Mountains": [
+      {
+        "q": "Highest in India?",
+        "a": "Kanchenjunga",
+        "c": [
+          "Kanchenjunga",
+          "Everest",
+          "K2",
+          "Nanda"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Neighbors": [
+      {
+        "q": "Longest border?",
+        "a": "Bangladesh",
+        "c": [
+          "Bangladesh",
+          "China",
+          "Pakistan",
+          "Nepal"
+        ],
+        "difficulty": "novice"
+      }
+    ],
+    "Languages": [
+      {
+        "q": "In Tamil Nadu?",
+        "a": "Tamil",
+        "c": [
+          "Tamil",
+          "Telugu",
+          "Malayalam",
+          "Kannada"
+        ],
+        "difficulty": "novice"
+      }
+    ]
+  }
+}
