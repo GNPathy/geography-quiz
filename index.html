@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Titan 750 (V2.1)</title>
+    <title>Geo-Titan 750 (V2.2)</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -127,7 +127,7 @@
         }
         .home-icon-btn:hover { opacity: 0.8; }
 
-        #q-text { min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; }
+        #q-text { min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
         
         /* Flag Image Styling */
         .flag-img {
@@ -153,7 +153,7 @@
 </head>
 <body>
 
-    <h1>🌍 Geo-Master: V2.1 🌍</h1>
+    <h1>🌍 Geo-Master: V2.2 🌍</h1>
     
     <!-- WELCOME SCREEN -->
     <div id="welcome-screen" class="glass-panel" style="display: block;">
@@ -290,7 +290,6 @@
         }
         tbody.innerHTML = "";
         scores.forEach((s, i) => {
-            // Default accuracy to N/A for older v2.0 saves
             const acc = s.accuracy !== undefined ? `${s.accuracy}%` : `N/A`;
             const rowStr = `<tr>
                 <td style="padding: 10px">${i+1}</td>
@@ -328,14 +327,13 @@
 
     // MODE: Specific Local Database
     async function startLocal(region, category) {
-        if(!localDB) return alert("Local questions database failed to load directly from folder. Please serve via local web-server or play Global internet modes!");
-        
+        if(!localDB) return alert("Local Database failed. Use Global Trivia.");
         const difficulty = document.getElementById('difficulty-select').value;
         const pool = localDB[region][category];
         if(!pool || pool.length === 0) return alert("Category zeroed out!");
 
         let filtered = pool.filter(q => q.difficulty === difficulty);
-        if(filtered.length < 5) filtered = pool; // Fallback if exact pool is tiny
+        if(filtered.length < 5) filtered = pool; 
         
         activeDeck = [...filtered].sort(() => Math.random() - 0.5).slice(0, 5);
         startRound();
@@ -364,13 +362,13 @@
                     c: [correctAnswer, ...item.incorrect_answers].map(decodeHtml)
                 };
             });
-            startRound(false); // don't re-prepare, just launch
+            startRound(false);
         } catch(e) {
             abortFetch("Failed to fetch global trivia. Check internet.");
         }
     }
 
-    // MODE: Flag Trivia (REST Countries API)
+    // MODE: Flag Trivia
     async function startFlags() {
         const diff = document.getElementById('difficulty-select').value;
         prepareGameScreen("Downloading global flags database...");
@@ -378,28 +376,25 @@
         try {
             const res = await fetch(`https://restcountries.com/v3.1/all?fields=name,flags,population`);
             let countries = await res.json();
-            
-            // Sort by population to scale difficulty! Novice = biggest countries, Expert = tiny nations
             countries.sort((a,b) => b.population - a.population);
             
             let pool = [];
-            if(diff === 'novice') pool = countries.slice(0, 60); // Top 60 most populated
-            else if(diff === 'intermediate') pool = countries.slice(60, 160); // Middle 100
-            else pool = countries.slice(140); // Bottom tiny/obscure nations
+            if(diff === 'novice') pool = countries.slice(0, 60); 
+            else if(diff === 'intermediate') pool = countries.slice(60, 160); 
+            else pool = countries.slice(140); 
             
-            // Pick 5 random rounds
             activeDeck = [];
             for (let i = 0; i < 5; i++) {
-                // Shuffle pool and pick 4 unique countries
                 const shuffled = [...pool].sort(() => Math.random() - 0.5);
                 const options = shuffled.slice(0, 4);
-                const target = options[Math.floor(Math.random() * options.length)]; // Target answer
+                const target = options[Math.floor(Math.random() * options.length)];
                 
                 activeDeck.push({
                     q: `<div style="font-size:1.2rem; margin-bottom:10px;">Which country does this flag belong to?</div>
                         <img src="${target.flags.png}" class="flag-img" alt="Mystery Flag">`,
-                    a: target.name.common,
-                    c: options.map(opt => opt.name.common)
+                    a: target.name.common, // The correct answer
+                    c: options.map(opt => opt.name.common), // The distractors
+                    isFlagMode: true
                 });
             }
             startRound(false);
@@ -426,6 +421,15 @@
         qIndex = 0;
         if(doPrepare) prepareGameScreen("");
         document.getElementById('post-round-screen').style.display = 'none';
+        
+        // Hide specific category grid if it was open
+        document.getElementById('category-grid').style.display = 'none';
+        
+        showQuestion();
+    }
+
+    function forceNextQuestion() {
+        qIndex++;
         showQuestion();
     }
 
@@ -433,22 +437,13 @@
         if (qIndex >= 5 || qIndex >= activeDeck.length) return endRound();
         
         const item = activeDeck[qIndex];
-        totalQuestionsSeen++; // They have officially seen exactly 1 new question.
+        totalQuestionsSeen++; 
         
-        // Update live metrics
         document.getElementById('live-score').innerText = totalScore;
-        
-        // At this exact moment, totalQuestionsSeen includes this question but totalScore doesn't yet.
-        // We will show accuracy as it WAS up until they answer this one. 
-        // Or calculate accuracy based on what they've FINISHED answering. Let's do finished answering (-1 from seen mathematically)
-        let finishedAcc = 0;
-        if(totalQuestionsSeen > 1) {
-             finishedAcc = Math.round((totalScore / (totalQuestionsSeen - 1)) * 100);
-        }
+        let finishedAcc = (totalQuestionsSeen > 1) ? Math.round((totalScore / (totalQuestionsSeen - 1)) * 100) : 0;
         document.getElementById('live-acc').innerText = `(${finishedAcc}%)`;
         document.getElementById('live-q').innerText = `${qIndex + 1}/${activeDeck.length}`;
         
-        // Accept raw InnerHTML here for Flags to display images gracefully
         document.getElementById('q-text').innerHTML = item.q;
         
         const zone = document.getElementById('ans-zone');
@@ -461,21 +456,66 @@
             btn.className = "ans-btn";
             btn.innerText = val;
             btn.onclick = function() {
-                Array.from(zone.children).forEach(b => b.onclick = null);
+                // Lock buttons
+                Array.from(zone.children).forEach(b => {
+                    b.onclick = null;
+                    b.style.opacity = "0.5";
+                });
+                this.style.opacity = "1";
                 
                 if(val === item.a) {
+                    // CORRECT
                     totalScore++;
                     this.style.background = "var(--correct)";
+                    setTimeout(() => { forceNextQuestion(); }, 1200);
                 } else {
+                    // INCORRECT - Educational Logic!
                     this.style.background = "var(--wrong)";
-                    Array.from(zone.children).forEach(b => {
-                        if(b.innerText === item.a) {
-                            b.style.border = "2px solid var(--correct)";
-                            b.style.background = "rgba(34, 197, 94, 0.2)";
-                        }
-                    });
+                    
+                    // We purposefully DO NOT reveal the correct answer.
+                    const learnPanel = document.createElement('div');
+                    learnPanel.style.marginTop = "25px";
+                    learnPanel.style.padding = "25px";
+                    learnPanel.style.borderRadius = "12px";
+                    learnPanel.style.background = "rgba(15, 23, 42, 0.9)";
+                    learnPanel.style.border = "3px solid var(--accent)";
+                    learnPanel.style.animation = "fadeIn 0.5s ease-out";
+                    
+                    // Build a Kiddle search specifically around the REAL answer to guide them to it!
+                    // E.g., if they guess Canada but it was Brazil, we make them research Brazil.
+                    let searchQuery;
+                    if(item.isFlagMode) {
+                        searchQuery = `Flag of ${item.a}`; // Let them search the real flag to see it matches the image!
+                    } else {
+                        // Normally just search the exact correct answer to learn why it's right.
+                        searchQuery = item.a; 
+                    }
+                    
+                    const safeSearchUrl = `https://kiddle.co/s.php?q=${encodeURIComponent(searchQuery)}`;
+
+                    learnPanel.innerHTML = `
+                        <h3 style="color: var(--accent); margin-top:0; font-size: 1.5rem;">❌ Not quite!</h3>
+                        <p style="color: var(--text-light); margin-bottom: 25px; font-size: 1.1rem;">
+                            Instead of just telling you the answer... we hid a hint for you!<br>
+                            Click below to research what the real answer is!
+                        </p>
+                        <div style="display:flex; gap:15px; justify-content:center; flex-wrap: wrap;">
+                            <a href="${safeSearchUrl}" target="_blank" style="background:var(--primary); color:var(--bg-main); padding:15px 30px; text-decoration:none; border-radius:8px; font-weight:bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(56, 189, 248, 0.4); transition: transform 0.2s;">
+                                🔍 Research It First!
+                            </a>
+                            <button onclick="forceNextQuestion()" style="background:#475569; color:white; border:none; padding:15px 30px; border-radius:8px; font-weight:bold; font-size: 1.1rem; cursor:pointer; font-family: 'Outfit';">
+                                Move On ➡️
+                            </button>
+                        </div>
+                    `;
+                    
+                    // Add smooth appear animation
+                    const style = document.createElement('style');
+                    style.innerHTML = `@keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }`;
+                    document.head.appendChild(style);
+                    
+                    zone.appendChild(learnPanel);
                 }
-                setTimeout(() => { qIndex++; showQuestion(); }, 1200);
             };
             zone.appendChild(btn);
         });
@@ -484,23 +524,21 @@
     function endRound() {
         document.getElementById('game-screen').style.display = 'none';
         document.getElementById('post-round-screen').style.display = 'block';
-        document.getElementById('round-score-text').innerText = `Total Score: ${totalScore}`;
+        document.getElementById('round-score-text').innerText = `Session Score: ${totalScore}`;
         document.getElementById('round-acc-text').innerText = `Accuracy: ${getAccuracy()}%`;
-        updateLobbyHeaders(); // Sync lobby for when they continue
+        updateLobbyHeaders(); 
     }
 
     function continuePlaying() {
-        document.getElementById('category-grid').style.display = 'none'; // reset grid state
         document.getElementById('post-round-screen').style.display = 'none';
         document.getElementById('lobby').style.display = 'block';
     }
 
     function saveHighScoreAndEnd() {
-        if(totalQuestionsSeen > 0) { // Only save if they actually played
+        if(totalQuestionsSeen > 0) {
             let scores = JSON.parse(localStorage.getItem('geoGridHighScores') || '[]');
             scores.push({ initials: playerInitials, score: totalScore, accuracy: getAccuracy() });
             
-            // Sort by Score descending, then by Accuracy descending
             scores.sort((a,b) => {
                 if (b.score === a.score) return b.accuracy - a.accuracy;
                 return b.score - a.score;
