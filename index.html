@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Titan 750 (V2.0)</title>
+    <title>Geo-Titan 750 (V2.1)</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -32,13 +32,7 @@
             min-height: 100vh;
         }
 
-        h1 {
-            color: var(--accent);
-            text-shadow: 0 4px 15px rgba(251, 191, 36, 0.3);
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-        }
-        
+        h1 { color: var(--accent); text-shadow: 0 4px 15px rgba(251, 191, 36, 0.3); font-size: 2.5rem; margin-bottom: 5px; }
         h2 { font-weight: 500; color: var(--primary); }
         h3 { font-weight: 500; color: var(--primary); margin: 10px 0; }
 
@@ -52,165 +46,126 @@
             max-width: 800px;
             width: 100%;
             margin-top: 20px;
+            position: relative; /* for absolute buttons inside */
             display: none; /* Controlled by JS */
         }
 
         /* --- Welcome Screen --- */
         .initials-input {
-            background: var(--bg-main);
-            border: 2px solid var(--primary);
-            color: white;
-            font-size: 2rem;
-            text-align: center;
-            width: 120px;
-            padding: 10px;
-            border-radius: 12px;
-            font-family: 'Outfit', monospace;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            margin-bottom: 20px;
+            background: var(--bg-main); border: 2px solid var(--primary); color: white;
+            font-size: 2rem; text-align: center; width: 120px; padding: 10px;
+            border-radius: 12px; font-family: 'Outfit', monospace; text-transform: uppercase;
+            letter-spacing: 5px; margin-bottom: 20px;
         }
-        
         .initials-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
         .btn-main {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            padding: 15px 40px;
-            border-radius: 12px;
-            cursor: pointer;
-            font-weight: bold;
-            font-family: 'Outfit', sans-serif;
+            border: none; color: white; font-size: 1.2rem; padding: 15px 40px;
+            border-radius: 12px; cursor: pointer; font-weight: bold; font-family: 'Outfit', sans-serif;
             transition: transform 0.2s, box-shadow 0.2s;
         }
         .btn-main:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(56, 189, 248, 0.4); }
 
-        .high-scores {
-            margin-top: 30px;
-            width: 100%;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
-            border-collapse: collapse;
-        }
-        .high-scores th { color: var(--text-dim); border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+        .high-scores { margin-top: 30px; width: 100%; max-width: 500px; margin-left: auto; margin-right: auto; border-collapse: collapse; }
+        .high-scores th { color: var(--text-dim); border-bottom: 1px solid var(--border); padding-bottom: 10px; font-size: 0.95rem; }
         .high-scores td { padding: 8px 0; border-bottom: 1px solid rgba(51, 65, 85, 0.5); }
 
         /* --- Lobby Screen --- */
         .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: var(--bg-card);
-            padding: 10px 20px;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            margin-bottom: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            background: var(--bg-card); padding: 10px 20px; border-radius: 12px;
+            border: 1px solid var(--border); margin-bottom: 25px;
         }
 
         .difficulty-select {
-            background: var(--bg-main);
-            color: var(--accent);
-            border: 1px solid var(--border);
-            padding: 8px 15px;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
+            background: var(--bg-main); color: var(--accent); border: 1px solid var(--border);
+            padding: 8px 15px; border-radius: 8px; font-family: 'Outfit', sans-serif;
+            font-weight: bold; font-size: 1rem; cursor: pointer;
         }
 
-        .global-mode-btn {
-            background: linear-gradient(45deg, #ec4899, #8b5cf6);
-            border: none;
-            color: white;
-            padding: 15px;
-            width: 100%;
-            border-radius: 12px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
-            transition: transform 0.2s;
-        }
-        .global-mode-btn:hover { transform: scale(1.02); }
-
-        .grid {
+        .mode-row {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
-        }
-        
-        .col {
-            background: var(--bg-card);
-            padding: 15px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
+            margin-bottom: 25px;
         }
 
+        .mode-btn {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            border: 2px solid var(--border); color: white; padding: 20px 10px;
+            border-radius: 15px; font-size: 1.1rem; font-weight: bold;
+            font-family: 'Outfit', sans-serif; cursor: pointer; transition: all 0.2s;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+        }
+        .mode-btn:hover { border-color: var(--primary); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2); }
+        .mode-btn.highlight { border-color: var(--secondary); background: linear-gradient(135deg, #312e81, #1e1b4b); }
+
+        .grid {
+            display: none; /* Toggled by JS */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .col { background: var(--bg-card); padding: 15px; border-radius: 15px; border: 1px solid var(--border); }
         .sub-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            margin: 6px 0;
-            background: var(--bg-main);
-            border: 1px solid var(--border);
-            color: var(--text-light);
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 0.95rem;
-            font-family: 'Outfit', sans-serif;
+            display: block; width: 100%; padding: 12px; margin: 6px 0; background: var(--bg-main);
+            border: 1px solid var(--border); color: var(--text-light); border-radius: 8px;
+            cursor: pointer; font-weight: 500; font-size: 0.95rem; font-family: 'Outfit', sans-serif;
             transition: all 0.2s;
         }
         .sub-btn:hover { background: var(--primary); color: var(--bg-main); border-color: var(--primary); }
 
         /* --- Game Screen --- */
         #game-screen { border: 2px solid var(--accent); box-shadow: 0 0 20px rgba(251, 191, 36, 0.1); }
-        .meta-text { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 10px; }
-        #q-text { min-height: 80px; display: flex; align-items: center; justify-content: center; }
+        .meta-text { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; }
+        
+        .home-icon-btn {
+            background: #ef4444; color: white; border: none; border-radius: 8px;
+            padding: 5px 12px; font-size: 0.9rem; font-family: 'Outfit'; font-weight: bold; cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .home-icon-btn:hover { opacity: 0.8; }
+
+        #q-text { min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; }
+        
+        /* Flag Image Styling */
+        .flag-img {
+            max-width: 250px;
+            border: 3px solid white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
 
         .ans-btn {
-            display: block;
-            width: 100%;
-            padding: 18px;
-            margin: 10px 0;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            background: #1e293b;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
+            display: block; width: 100%; padding: 18px; margin: 10px 0; border-radius: 12px;
+            border: 1px solid var(--border); background: #1e293b; color: white; font-size: 1.1rem;
+            font-weight: 500; cursor: pointer; font-family: 'Outfit'; transition: background 0.2s, transform 0.1s;
         }
         .ans-btn:hover { background: #334155; }
         .ans-btn:active { transform: scale(0.98); }
 
-        /* Responsive */
         @media (max-width: 768px) {
+            .mode-row { grid-template-columns: 1fr; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <h1>🌍 Geo-Master: V2.0 🌍</h1>
+    <h1>🌍 Geo-Master: V2.1 🌍</h1>
     
     <!-- WELCOME SCREEN -->
     <div id="welcome-screen" class="glass-panel" style="display: block;">
         <h2>Enter Initials to Start</h2>
         <input type="text" id="initials-input" class="initials-input" maxlength="3" placeholder="ABC" oninput="this.value = this.value.toUpperCase()">
         <br>
-        <button class="btn-main" onclick="startGame()">Play Now</button>
+        <button class="btn-main" onclick="startGame()">▶ Play Now</button>
 
         <div style="margin-top: 40px;">
             <h3>🏆 Top Explorers</h3>
             <table class="high-scores">
-                <thead><tr><th style="text-align:left">Rank</th><th style="text-align:left">Player</th><th style="text-align:right">Score</th></tr></thead>
+                <thead><tr><th style="text-align:left">Rank</th><th style="text-align:left">Player</th><th style="text-align:center">Accuracy</th><th style="text-align:right">Score</th></tr></thead>
                 <tbody id="high-scores-body">
                     <!-- Populated by JS -->
                 </tbody>
@@ -221,7 +176,7 @@
     <!-- LOBBY SCREEN -->
     <div id="lobby" class="glass-panel">
         <div class="top-bar">
-            <div><strong style="color:var(--text-dim)">Player:</strong> <span id="lobby-player" style="color:var(--accent)">---</span></div>
+            <div><strong style="color:var(--text-dim)">P1:</strong> <span id="lobby-player" style="color:var(--accent)">---</span></div>
             <div>
                 <strong style="color:var(--text-dim)">Difficulty: </strong>
                 <select id="difficulty-select" class="difficulty-select">
@@ -230,13 +185,28 @@
                     <option value="expert">🔴 Expert</option>
                 </select>
             </div>
-            <div><strong style="color:var(--text-dim)">Score:</strong> <span id="lobby-score" style="color:var(--correct); font-size: 1.2rem; font-weight: bold;">0</span></div>
+            <div>
+                <strong style="color:var(--text-dim)">Score:</strong> <span id="lobby-score" style="color:var(--correct); font-size: 1.2rem; font-weight: bold;">0</span>
+                <span id="lobby-acc" style="color:var(--text-dim); font-size:0.9rem;">(0%)</span>
+            </div>
         </div>
 
-        <button class="global-mode-btn" onclick="startGlobal()">🎲 Play Random Global Trivia</button>
-        <div style="color: var(--text-dim); margin-bottom: 15px;">— OR CHOOSE A SPECIFIC CATEGORY —</div>
+        <div class="mode-row">
+            <button class="mode-btn" onclick="startGlobal()">
+                <span style="font-size: 2rem;">🌍</span>
+                Random Global Trivia
+            </button>
+            <button class="mode-btn" onclick="startFlags()">
+                <span style="font-size: 2rem;">🚩</span>
+                Random Flags Challenge
+            </button>
+            <button class="mode-btn highlight" onclick="toggleCategories()">
+                <span style="font-size: 2rem;">📂</span>
+                Specific Categories
+            </button>
+        </div>
 
-        <div class="grid">
+        <div class="grid" id="category-grid">
             <div class="col">
                 <h3>World</h3>
                 <button class="sub-btn" onclick="startLocal('World', 'Capitals')">Capitals</button>
@@ -266,7 +236,11 @@
 
     <!-- GAME SCREEN -->
     <div id="game-screen" class="glass-panel">
-        <div class="meta-text" id="meta">Initials: --- | Score: 0 | Q: 1/5</div>
+        <div class="meta-text" id="meta">
+            <span>Score: <span id="live-score">0</span> <span id="live-acc">(0%)</span></span>
+            <span>Q: <span id="live-q">1/5</span></span>
+            <button class="home-icon-btn" onclick="saveHighScoreAndEnd()">🔚 Exit to Home</button>
+        </div>
         <h2 id="q-text">Loading...</h2>
         <div id="ans-zone"></div>
     </div>
@@ -274,30 +248,34 @@
     <!-- POST ROUND SCREEN -->
     <div id="post-round-screen" class="glass-panel">
         <h2>Round Complete!</h2>
-        <h1 id="round-score-text" style="color: var(--correct)">Total Score: 0</h1>
-        <p style="color: var(--text-dim); margin-bottom: 30px;">Keep playing to increase your high score, or save and end the game now.</p>
+        <h1 id="round-score-text" style="color: var(--correct)">Session Score: 0</h1>
+        <h3 id="round-acc-text" style="color: var(--text-dim); margin-bottom: 30px;">Accuracy: 0%</h3>
         
-        <button class="btn-main" onclick="continuePlaying()" style="width: 100%; margin-bottom: 15px;">🔄 Continue Playing</button>
-        <button class="btn-main" onclick="saveHighScoreAndEnd()" style="width: 100%; background: #0f3460;">💾 Save Score & End</button>
+        <button class="btn-main" onclick="continuePlaying()" style="width: 100%; margin-bottom: 15px;">🔄 Keep Playing</button>
+        <button class="btn-main" onclick="saveHighScoreAndEnd()" style="width: 100%; background: #ef4444;">💾 Save Score & End Game</button>
     </div>
 
 <script>
     let playerInitials = "";
     let totalScore = 0;
+    let totalQuestionsSeen = 0; // tracking for accuracy
     let qIndex = 0;
     let activeDeck = [];
     let localDB = null; 
+
+    // Calculate current accuracy dynamically
+    function getAccuracy() {
+        if (totalQuestionsSeen === 0) return 0;
+        return Math.round((totalScore / totalQuestionsSeen) * 100);
+    }
 
     // Initialize Page
     window.onload = async () => {
         renderHighScores();
         try {
             const res = await fetch('data/questions.json');
-            if (res.ok) {
-                localDB = await res.json();
-            } else {
-                console.warn("Failed to load local DB. Ensure it is hosted via a server (not file://).");
-            }
+            if (res.ok) localDB = await res.json();
+            else console.warn("Failed to load local DB via network.");
         } catch (e) {
             console.warn("Network error fetching local DB.", e);
         }
@@ -307,15 +285,18 @@
         let scores = JSON.parse(localStorage.getItem('geoGridHighScores') || '[]');
         const tbody = document.getElementById('high-scores-body');
         if(scores.length === 0) {
-            tbody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding: 10px; color: #94a3b8">No scores yet!</td></tr>`;
+            tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding: 10px; color: #94a3b8">No scores recorded yet! Play a round to rank.</td></tr>`;
             return;
         }
         tbody.innerHTML = "";
         scores.forEach((s, i) => {
+            // Default accuracy to N/A for older v2.0 saves
+            const acc = s.accuracy !== undefined ? `${s.accuracy}%` : `N/A`;
             const rowStr = `<tr>
                 <td style="padding: 10px">${i+1}</td>
                 <td style="padding: 10px; font-weight:bold; color: var(--primary); letter-spacing: 2px;">${s.initials}</td>
-                <td style="padding: 10px; text-align:right">${s.score}</td>
+                <td style="padding: 10px; text-align:center; color: var(--text-dim)">${acc}</td>
+                <td style="padding: 10px; text-align:right; font-weight:bold">${s.score}</td>
             </tr>`;
             tbody.innerHTML += rowStr;
         });
@@ -323,62 +304,56 @@
 
     function startGame() {
         const input = document.getElementById('initials-input').value.trim();
-        if(input.length === 0) return alert("Please enter your initials!");
+        if(input.length === 0) return alert("Please enter your 3-letter initials!");
         
         playerInitials = input;
         totalScore = 0;
+        totalQuestionsSeen = 0;
         
         document.getElementById('welcome-screen').style.display = 'none';
         document.getElementById('lobby').style.display = 'block';
-        document.getElementById('lobby-player').innerText = playerInitials;
-        document.getElementById('lobby-score').innerText = totalScore;
+        updateLobbyHeaders();
     }
 
+    function toggleCategories() {
+        const grid = document.getElementById('category-grid');
+        grid.style.display = grid.style.display === 'grid' ? 'none' : 'grid';
+    }
+
+    function updateLobbyHeaders() {
+        document.getElementById('lobby-player').innerText = playerInitials;
+        document.getElementById('lobby-score').innerText = totalScore;
+        document.getElementById('lobby-acc').innerText = `(${getAccuracy()}%)`;
+    }
+
+    // MODE: Specific Local Database
     async function startLocal(region, category) {
-        if(!localDB) {
-            alert("Local questions database failed to load. Are you opening this file directly in the browser instead of using a local server? If so, play 'Global Trivia' mode instead!");
-            return;
-        }
+        if(!localDB) return alert("Local questions database failed to load directly from folder. Please serve via local web-server or play Global internet modes!");
         
         const difficulty = document.getElementById('difficulty-select').value;
         const pool = localDB[region][category];
-        
-        if(!pool || pool.length === 0) return alert("Category not found!");
+        if(!pool || pool.length === 0) return alert("Category zeroed out!");
 
-        // Try filtering by difficulty
         let filtered = pool.filter(q => q.difficulty === difficulty);
-        if(filtered.length < 5) {
-            // Fallback if not enough questions exist for that exact difficulty tier
-            console.log("Not enough specific difficulty questions, falling back to full category");
-            filtered = pool; 
-        }
+        if(filtered.length < 5) filtered = pool; // Fallback if exact pool is tiny
         
         activeDeck = [...filtered].sort(() => Math.random() - 0.5).slice(0, 5);
         startRound();
     }
 
+    // MODE: OpenTDB API
     async function startGlobal() {
         const diffMap = { novice: 'easy', intermediate: 'medium', expert: 'hard' };
         const apiDiff = diffMap[document.getElementById('difficulty-select').value];
-        
-        document.getElementById('lobby').style.display = 'none';
-        document.getElementById('game-screen').style.display = 'block';
-        document.getElementById('q-text').innerText = "Fetching global trivia from internet...";
-        document.getElementById('ans-zone').innerHTML = "";
-        document.getElementById('meta').innerText = `Initials: ${playerInitials} | Score: ${totalScore} | Fetching...`;
+        prepareGameScreen("Fetching global trivia...");
 
         try {
-            // Category 22 is Geography
             const res = await fetch(`https://opentdb.com/api.php?amount=5&category=22&difficulty=${apiDiff}&type=multiple`);
             const data = await res.json();
-            
-            if(data.response_code !== 0) throw new Error("API failed to return questions");
+            if(data.response_code !== 0) throw new Error("API failed");
 
-            // Decode HTML entities (like &quot;) using a tiny textarea trick
             const decodeHtml = (html) => {
-                const txt = document.createElement("textarea");
-                txt.innerHTML = html;
-                return txt.value;
+                const txt = document.createElement("textarea"); txt.innerHTML = html; return txt.value;
             };
 
             activeDeck = data.results.map(item => {
@@ -389,36 +364,96 @@
                     c: [correctAnswer, ...item.incorrect_answers].map(decodeHtml)
                 };
             });
-            startRound();
+            startRound(false); // don't re-prepare, just launch
         } catch(e) {
-            console.error(e);
-            alert("Failed to fetch global trivia. Please check your internet connection.");
-            document.getElementById('lobby').style.display = 'block';
-            document.getElementById('game-screen').style.display = 'none';
+            abortFetch("Failed to fetch global trivia. Check internet.");
         }
     }
 
-    function startRound() {
-        qIndex = 0;
+    // MODE: Flag Trivia (REST Countries API)
+    async function startFlags() {
+        const diff = document.getElementById('difficulty-select').value;
+        prepareGameScreen("Downloading global flags database...");
+
+        try {
+            const res = await fetch(`https://restcountries.com/v3.1/all?fields=name,flags,population`);
+            let countries = await res.json();
+            
+            // Sort by population to scale difficulty! Novice = biggest countries, Expert = tiny nations
+            countries.sort((a,b) => b.population - a.population);
+            
+            let pool = [];
+            if(diff === 'novice') pool = countries.slice(0, 60); // Top 60 most populated
+            else if(diff === 'intermediate') pool = countries.slice(60, 160); // Middle 100
+            else pool = countries.slice(140); // Bottom tiny/obscure nations
+            
+            // Pick 5 random rounds
+            activeDeck = [];
+            for (let i = 0; i < 5; i++) {
+                // Shuffle pool and pick 4 unique countries
+                const shuffled = [...pool].sort(() => Math.random() - 0.5);
+                const options = shuffled.slice(0, 4);
+                const target = options[Math.floor(Math.random() * options.length)]; // Target answer
+                
+                activeDeck.push({
+                    q: `<div style="font-size:1.2rem; margin-bottom:10px;">Which country does this flag belong to?</div>
+                        <img src="${target.flags.png}" class="flag-img" alt="Mystery Flag">`,
+                    a: target.name.common,
+                    c: options.map(opt => opt.name.common)
+                });
+            }
+            startRound(false);
+        } catch(e) {
+            abortFetch("Failed to fetch flag images. Check internet.");
+        }
+    }
+
+    // Engine Flow
+    function prepareGameScreen(msg) {
         document.getElementById('lobby').style.display = 'none';
-        document.getElementById('post-round-screen').style.display = 'none';
         document.getElementById('game-screen').style.display = 'block';
+        document.getElementById('q-text').innerText = msg;
+        document.getElementById('ans-zone').innerHTML = "";
+    }
+
+    function abortFetch(err) {
+        alert(err);
+        document.getElementById('lobby').style.display = 'block';
+        document.getElementById('game-screen').style.display = 'none';
+    }
+
+    function startRound(doPrepare = true) {
+        qIndex = 0;
+        if(doPrepare) prepareGameScreen("");
+        document.getElementById('post-round-screen').style.display = 'none';
         showQuestion();
     }
 
     function showQuestion() {
-        if (qIndex >= 5 || qIndex >= activeDeck.length) {
-            return endRound();
-        }
+        if (qIndex >= 5 || qIndex >= activeDeck.length) return endRound();
         
         const item = activeDeck[qIndex];
-        document.getElementById('meta').innerText = `Initials: ${playerInitials} | Total Score: ${totalScore} | Q: ${qIndex + 1}/${activeDeck.length}`;
-        document.getElementById('q-text').innerText = item.q;
+        totalQuestionsSeen++; // They have officially seen exactly 1 new question.
+        
+        // Update live metrics
+        document.getElementById('live-score').innerText = totalScore;
+        
+        // At this exact moment, totalQuestionsSeen includes this question but totalScore doesn't yet.
+        // We will show accuracy as it WAS up until they answer this one. 
+        // Or calculate accuracy based on what they've FINISHED answering. Let's do finished answering (-1 from seen mathematically)
+        let finishedAcc = 0;
+        if(totalQuestionsSeen > 1) {
+             finishedAcc = Math.round((totalScore / (totalQuestionsSeen - 1)) * 100);
+        }
+        document.getElementById('live-acc').innerText = `(${finishedAcc}%)`;
+        document.getElementById('live-q').innerText = `${qIndex + 1}/${activeDeck.length}`;
+        
+        // Accept raw InnerHTML here for Flags to display images gracefully
+        document.getElementById('q-text').innerHTML = item.q;
         
         const zone = document.getElementById('ans-zone');
         zone.innerHTML = "";
         
-        // Shuffle choices safely
         const choices = [...item.c].sort(() => Math.random() - 0.5);
         
         choices.forEach(val => {
@@ -426,7 +461,6 @@
             btn.className = "ans-btn";
             btn.innerText = val;
             btn.onclick = function() {
-                // Disable all buttons to prevent double-clicking
                 Array.from(zone.children).forEach(b => b.onclick = null);
                 
                 if(val === item.a) {
@@ -434,15 +468,13 @@
                     this.style.background = "var(--correct)";
                 } else {
                     this.style.background = "var(--wrong)";
-                    // Highlight the correct answer lightly to inform the user
                     Array.from(zone.children).forEach(b => {
                         if(b.innerText === item.a) {
                             b.style.border = "2px solid var(--correct)";
-                            b.style.background = "rgba(34, 197, 94, 0.2)"; // faint green
+                            b.style.background = "rgba(34, 197, 94, 0.2)";
                         }
                     });
                 }
-                
                 setTimeout(() => { qIndex++; showQuestion(); }, 1200);
             };
             zone.appendChild(btn);
@@ -453,26 +485,30 @@
         document.getElementById('game-screen').style.display = 'none';
         document.getElementById('post-round-screen').style.display = 'block';
         document.getElementById('round-score-text').innerText = `Total Score: ${totalScore}`;
-        document.getElementById('lobby-score').innerText = totalScore;
+        document.getElementById('round-acc-text').innerText = `Accuracy: ${getAccuracy()}%`;
+        updateLobbyHeaders(); // Sync lobby for when they continue
     }
 
     function continuePlaying() {
+        document.getElementById('category-grid').style.display = 'none'; // reset grid state
         document.getElementById('post-round-screen').style.display = 'none';
         document.getElementById('lobby').style.display = 'block';
     }
 
     function saveHighScoreAndEnd() {
-        if(totalScore > 0) {
+        if(totalQuestionsSeen > 0) { // Only save if they actually played
             let scores = JSON.parse(localStorage.getItem('geoGridHighScores') || '[]');
-            scores.push({ initials: playerInitials, score: totalScore });
+            scores.push({ initials: playerInitials, score: totalScore, accuracy: getAccuracy() });
             
-            // Sort descending and keep top 5
-            scores.sort((a,b) => b.score - a.score);
+            // Sort by Score descending, then by Accuracy descending
+            scores.sort((a,b) => {
+                if (b.score === a.score) return b.accuracy - a.accuracy;
+                return b.score - a.score;
+            });
             scores = scores.slice(0, 5);
-            
             localStorage.setItem('geoGridHighScores', JSON.stringify(scores));
         }
-        location.reload(); // Quickest way to reset everything
+        location.reload(); 
     }
 </script>
 </body>
