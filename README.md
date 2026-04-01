@@ -1,6 +1,6 @@
-# Geo-Master: V2.0 🌍
+# GeoFun Explorer (v0.9) 🌍
 
-Geo-Master is a lightweight, frontend-only geography quiz application designed for kids with varying ages. Players can input their initials, track running scores, and conquer geography topics.
+GeoFun Explorer (v0.9) is a dynamic, frontend-only geography quiz application designed for kids with varying ages. Players can input their initials, track running scores, and conquer geography topics across thousands of dynamic and static questions.
 
 ## Features
 - **Initials & High Scores**: Players enter a 3-letter initial on start. Top scores are continuously saved to the browser's `localStorage`.

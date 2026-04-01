@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Titan 750 (V2.4)</title>
+    <title>GeoFun Explorer (v0.9)</title>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQT846PJ40"></script>
@@ -167,7 +167,7 @@
 </head>
 <body>
 
-    <h1>🌍 Geo-Master: V2.4 🌍</h1>
+    <h1>🌍 GeoFun Explorer (v0.9) 🌍</h1>
     
     <!-- WELCOME SCREEN -->
     <div id="welcome-screen" class="glass-panel" style="display: block;">
@@ -288,6 +288,17 @@
     let activeDeck = [];
     let localDB = null; 
 
+    // Fisher-Yates array shuffle
+    function shuffleArray(array) {
+        let currentIndex = array.length, randomIndex;
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+            [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+        }
+        return array;
+    }
+
     // Global Keyboard Listener for Answers
     document.addEventListener('keydown', (e) => {
         if (document.getElementById('game-screen').style.display === 'block') {
@@ -375,7 +386,7 @@
         let filtered = pool.filter(q => q.difficulty === difficulty);
         if(filtered.length < 5) filtered = pool; 
         
-        activeDeck = [...filtered].sort(() => Math.random() - 0.5).slice(0, 5);
+        activeDeck = shuffleArray([...filtered]).slice(0, 5);
         startRound();
     }
 
@@ -425,7 +436,7 @@
             
             activeDeck = [];
             for (let i = 0; i < 5; i++) {
-                const shuffled = [...pool].sort(() => Math.random() - 0.5);
+                const shuffled = shuffleArray([...pool]);
                 const options = shuffled.slice(0, 4);
                 const target = options[Math.floor(Math.random() * options.length)];
                 
@@ -486,7 +497,7 @@
         const zone = document.getElementById('ans-zone');
         zone.innerHTML = "";
         
-        const choices = [...item.c].sort(() => Math.random() - 0.5);
+        const choices = shuffleArray([...item.c]);
         
         choices.forEach((val, i) => {
             const btn = document.createElement('button');
