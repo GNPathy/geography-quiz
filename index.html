@@ -639,10 +639,53 @@
             localStorage.setItem('geoGridHighScores', JSON.stringify(scores));
         }
         location.reload(); 
+    let previousScreen = 'welcome-screen';
+
+    function showAbout() {
+        if(document.getElementById('welcome-screen').style.display !== 'none') previousScreen = 'welcome-screen';
+        else if(document.getElementById('lobby').style.display !== 'none') previousScreen = 'lobby';
+        else if(document.getElementById('game-screen').style.display !== 'none') previousScreen = 'game-screen';
+        else previousScreen = 'post-round-screen';
+
+        document.getElementById('welcome-screen').style.display = 'none';
+        document.getElementById('lobby').style.display = 'none';
+        document.getElementById('game-screen').style.display = 'none';
+        document.getElementById('post-round-screen').style.display = 'none';
+        
+        document.getElementById('about-screen').style.display = 'block';
+    }
+
+    function hideAbout() {
+        document.getElementById('about-screen').style.display = 'none';
+        document.getElementById(previousScreen).style.display = 'block';
     }
 </script>
     <footer style="margin-top: 50px; text-align: center; color: #64748b; font-size: 0.85rem; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); width: 100%; max-width: 800px; margin-inline: auto;">
         <strong>Disclaimer:</strong> Dear Parents/Guardians, This free educational tool was written for kids in my family, with them in mind. While our core questions are hand-curated, the 'Global Trivia' modes pull data from live public internet databases, and our fact-checks utilize external kid-safe search engines. Please supervise sensibly and enjoy the learning journey.
+        <br><br>
+        <a href="javascript:void(0)" onclick="showAbout()" style="color: var(--primary); text-decoration: underline; font-weight: 500; font-size: 0.95rem; cursor: pointer;">To know more about this game, click here.</a>
     </footer>
+
+    <!-- ABOUT SCREEN -->
+    <div id="about-screen" class="glass-panel" style="max-height: 80vh; overflow-y: auto; text-align: left; margin-bottom: 50px;">
+        <h2 style="text-align: center;">📖 About GeoVerse Explorer</h2>
+        
+        <h3 style="border-bottom: 1px solid rgba(51, 65, 85, 0.5); padding-bottom: 5px; color: var(--accent);">Our Story</h3>
+        <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-light);">GeoVerse Explorer started as a weekend "vibe-coding" passion project inspired by my two young kids and their growing fascination with world maps. Built to merge their curiosity with a safe digital learning tool, it rapidly expanded from a static quiz into a dynamic ecosystem connecting hand-curated geographic facts with real-time internet datasets.</p>
+
+        <h3 style="border-bottom: 1px solid rgba(51, 65, 85, 0.5); padding-bottom: 5px; color: var(--accent); margin-top: 25px;">Safety & Privacy First</h3>
+        <p style="font-size: 0.95rem; line-height: 1.5; color: var(--text-light);">As a parent, protecting young learners' data is our top priority. <strong>GeoVerse Explorer is strictly private by design.</strong> The application runs 100% locally in your web browser's temporary memory. No names, initials, or high scores are ever exfiltrated or sent to a cloud database.<br><br>Furthermore, our Post-Answer learning panels are carefully sandboxed to interact with <a href="https://kiddle.co" target="_blank" style="color: var(--primary);">Kiddle.co</a>—a curated visual search engine heavily filtered for kid-safe exploration.</p>
+
+        <h3 style="border-bottom: 1px solid rgba(51, 65, 85, 0.5); padding-bottom: 5px; color: var(--accent); margin-top: 25px;">How to Play</h3>
+        <ul style="font-size: 0.95rem; line-height: 1.6; color: var(--text-light); padding-left: 20px;">
+            <li><strong>Entering the Lobby:</strong> Submit your 3-letter initials via the Welcome Screen to access the main game Hub. You can tap the dropdown at the top to set the difficulty scale globally (Novice, Intermediate, Expert).</li>
+            <li><strong>Game Modes:</strong> Select <em>"Random Global Trivia"</em> for an endless mix of global trivia, <em>"Random Flags Challenge"</em> to test flag recognition, or open <em>"Specific Categories"</em> to drill down into precise topics like Rivers or Neighbors.</li>
+            <li><strong>The Format:</strong> Every single round consists of 5 dynamically scrambled questions. Answering questions correctly boosts your Session Score and overall Accuracy!</li>
+            <li><strong>Contextual Learning:</strong> At the very end of a question, you'll be given the correct answer alongside an exploratory deep-dive link to securely cross-reference the topic.</li>
+            <li><strong>Score Persistence:</strong> By tapping <em>"Keep Playing"</em>, your running score safely rolls right over into your next set sequence smoothly. Click <em>"Save Score & End Game"</em> to securely lock in your session and inject it right into your personal Leaderboard on this device!</li>
+        </ul>
+        
+        <button class="btn-main" onclick="hideAbout()" style="width: 100%; margin-top: 30px; background: #64748b; box-shadow: none;">◀ Return to App</button>
+    </div>
 </body>
 </html>
