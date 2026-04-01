@@ -16,6 +16,8 @@ While building this, I realized that creating an educational app for children re
 
 **5️⃣ Privacy is Non-Negotiable:** As a parent, protecting my kids' data is my top priority. GeoVerse Explorer (v0.9) is built to run 100% locally. None of their information or scores are ever exfiltrated to a server—everything stays safely secured right within the browser's memory.
 
+**6️⃣ Fully Responsive & Transparent:** I specifically refactored the CSS media queries to ensure the UI formats perfectly for kids playing on a tablet or phone. I also injected a transparent parental disclaimer right into the footer regarding exactly how we use open internet databases.
+
 Vibe-coding this project was an absolute blast. It’s amazing how quickly you can spin up a functional, safe, and educational environment when you combine the right tools with a little bit of parental inspiration! 
 
 Has anyone else here tried vibe-coding a project for their kids? Let me know below! 👇

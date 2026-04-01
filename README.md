@@ -1,4 +1,5 @@
 # GeoVerse Explorer (v0.9) 🌍
+*Power your curiosity journey, one Geography question at a time*
 
 GeoVerse Explorer (v0.9) is a dynamic, frontend-only geography quiz application designed for kids with varying ages. Players can input their initials, track running scores, and conquer geography topics across thousands of dynamic and static questions.
 
@@ -8,6 +9,7 @@ GeoVerse Explorer (v0.9) is a dynamic, frontend-only geography quiz application 
   - **Specific Categories**: Dive into fine-grained topics like "Rivers in the USA" or "Languages of India" pulling directly from `data/questions.json`.
   - **Global Trivia**: Step out of the specific topics and get 5 random Geography questions fetched directly from the live Open Trivia Database API!
 - **Difficulty Scaling**: Choose between *Novice*, *Intermediate*, and *Expert* from the lobby to seamlessly scale the difficulty of either Game Mode.
+- **Mobile Responsive & Kid-Safe Design**: Comes fully equipped with dynamic CSS media boundaries built out for mobile/tablet browsers, complete with a global Guardian/Parental API usage disclaimer at the footer.
 - **Running Score Persistence**: Rounds are 5 questions long, but players can choose to "Continue Playing" safely retaining their score until they click "Save Score & End".
 
 ## How to Play / Host

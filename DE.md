@@ -6,7 +6,7 @@ GeoVerse Explorer is a lightweight, frontend-only Single Page Application (SPA) 
 ## 2. Technology Stack
 *   **Core Languages:** Vanilla HTML5, CSS3, and JavaScript (ES6+).
 *   **Build Environment:** Node.js (strictly used as an offline static-data builder, not as a runtime server).
-*   **Styling:** Pure Vanilla CSS relying on modern variables (`:root`), Flexbox/CSS Grid, and Glassmorphism aesthetics. No external CSS frameworks (like Tailwind or Bootstrap) were used, keeping the packet size small.
+*   **Styling & Responsiveness:** Pure Vanilla CSS relying on modern variables (`:root`), Flexbox/CSS Grid, and Glassmorphism aesthetics. The styling utilizes modern `@media` rules allowing it to elegantly re-flow into a mobile-first app on phone browsers. No external CSS frameworks were used, keeping the packet size small.
 *   **Data Persistence:** Browser `localStorage` (Privacy-first; no backend database or cloud syncing).
 
 ## 3. System Architecture & Modules
@@ -34,6 +34,7 @@ Instead of binary Right/Wrong answers, the application intercepts the answer res
 The app does not require a backend runtime (like Express, Django, or a cloud DB). 
 *   **No PII Exfiltration:** Player initials, analytics, and scores never leave the local environment.
 *   **Local Storage:** The high score table (`geoGridHighScores`) relies 100% on native HTML5 Web Storage.
+*   **Parental Transparency:** A strict disclaimer string is injected globally at the footer to ensure guardians have context regarding the external public APIs used in the global trivia game modes.
 
 ## 4. Deployment Strategy
 Because the app fetches an external local file (`data/questions.json`), it requires a basic HTTP environment to pass modern browser CORS origin checks.
