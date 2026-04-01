@@ -63,9 +63,9 @@
         /* --- Welcome Screen --- */
         .initials-input {
             background: var(--bg-main); border: 2px solid var(--primary); color: white;
-            font-size: 2rem; text-align: center; width: 120px; padding: 10px;
+            font-size: 2rem; text-align: center; width: 250px; padding: 10px;
             border-radius: 12px; font-family: 'Outfit', monospace; text-transform: uppercase;
-            letter-spacing: 5px; margin-bottom: 20px;
+            letter-spacing: 2px; margin-bottom: 20px;
         }
         .initials-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 15px var(--accent); }
 
@@ -171,8 +171,8 @@
     
     <!-- WELCOME SCREEN -->
     <div id="welcome-screen" class="glass-panel" style="display: block;">
-        <h2>Enter Initials to Start</h2>
-        <input type="text" id="initials-input" class="initials-input" maxlength="3" placeholder="ABC" oninput="this.value = this.value.toUpperCase()">
+        <h2>Enter Player's Name</h2>
+        <input type="text" id="initials-input" class="initials-input" maxlength="12" placeholder="ALICE" oninput="this.value = this.value.toUpperCase()">
         <br>
         <button class="btn-main" onclick="startGame()">▶ Play Now</button>
 
@@ -269,6 +269,17 @@
         <button class="btn-main" onclick="saveHighScoreAndEnd()" style="width: 100%; background: #ef4444;">💾 Save Score & End Game</button>
     </div>
 
+    <!-- Global Footer -->
+    <div style="margin-top: auto; padding-top: 40px; text-align: center; font-size: 0.9rem;">
+        <a href="mailto:gaunt.apps@gmail.com" style="color: var(--text-dim); text-decoration: none; margin-right: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
+            📧 Click to send Feedback
+        </a> 
+        <span style="color: var(--border);">|</span>
+        <a href="https://antigravity.google/" target="_blank" style="color: var(--text-dim); text-decoration: none; margin-left: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
+            ✨ Thanks to Antigravity
+        </a>
+    </div>
+
 <script>
     let playerInitials = "";
     let totalScore = 0;
@@ -332,7 +343,7 @@
 
     function startGame() {
         const input = document.getElementById('initials-input').value.trim();
-        if(input.length === 0) return alert("Please enter your 3-letter initials!");
+        if(input.length === 0) return alert("Please enter your name!");
         
         playerInitials = input;
         totalScore = 0;
