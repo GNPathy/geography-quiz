@@ -3,7 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geo-Titan 750 (V2.3)</title>
+    <title>Geo-Titan 750 (V2.4)</title>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQT846PJ40"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-HQT846PJ40');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -46,8 +56,8 @@
             max-width: 800px;
             width: 100%;
             margin-top: 20px;
-            position: relative; /* for absolute buttons inside */
-            display: none; /* Controlled by JS */
+            position: relative;
+            display: none;
         }
 
         /* --- Welcome Screen --- */
@@ -102,7 +112,7 @@
         .mode-btn.highlight { border-color: var(--secondary); background: linear-gradient(135deg, #312e81, #1e1b4b); }
 
         .grid {
-            display: none; /* Toggled by JS */
+            display: none;
             grid-template-columns: repeat(3, 1fr);
             gap: 15px;
             margin-top: 15px;
@@ -129,7 +139,6 @@
 
         #q-text { min-height: 80px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; margin-bottom: 20px; }
         
-        /* Flag Image Styling */
         .flag-img {
             max-width: 250px;
             border: 3px solid white;
@@ -158,7 +167,7 @@
 </head>
 <body>
 
-    <h1>🌍 Geo-Master: V2.3 🌍</h1>
+    <h1>🌍 Geo-Master: V2.4 🌍</h1>
     
     <!-- WELCOME SCREEN -->
     <div id="welcome-screen" class="glass-panel" style="display: block;">
@@ -267,6 +276,21 @@
     let qIndex = 0;
     let activeDeck = [];
     let localDB = null; 
+
+    // Global Keyboard Listener for Answers
+    document.addEventListener('keydown', (e) => {
+        if (document.getElementById('game-screen').style.display === 'block') {
+            if (['1', '2', '3', '4'].includes(e.key)) {
+                const zone = document.getElementById('ans-zone');
+                if(!zone) return;
+                const btn = zone.children[parseInt(e.key) - 1]; // Array is 0-indexed
+                // Ensure it's an answer button and it hasn't been disabled via null onclick
+                if (btn && btn.onclick) {
+                    btn.click();
+                }
+            }
+        }
+    });
 
     // Calculate current accuracy dynamically
     function getAccuracy() {
@@ -426,10 +450,7 @@
         qIndex = 0;
         if(doPrepare) prepareGameScreen("");
         document.getElementById('post-round-screen').style.display = 'none';
-        
-        // Hide specific category grid if it was open
         document.getElementById('category-grid').style.display = 'none';
-        
         showQuestion();
     }
 
@@ -456,12 +477,14 @@
         
         const choices = [...item.c].sort(() => Math.random() - 0.5);
         
-        choices.forEach(val => {
+        choices.forEach((val, i) => {
             const btn = document.createElement('button');
             btn.className = "ans-btn";
-            btn.innerText = val;
+            // Injects [1], [2], [3], [4] into the button's visible text perfectly
+            btn.innerHTML = `<span style="opacity:0.5; margin-right:8px; font-weight:normal;">[${i+1}]</span> ${val}`;
+            
             btn.onclick = function() {
-                // Lock buttons
+                // Lock ALL buttons visually
                 Array.from(zone.children).forEach(b => {
                     b.onclick = null;
                     b.style.opacity = "0.5";
