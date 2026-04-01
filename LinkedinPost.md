@@ -1,8 +1,8 @@
-# LinkedIn Post Draft: GeoFun Explorer (v0.9)
+# LinkedIn Post Draft: GeoVerse Explorer (v0.9)
 
 **🌍 What happens when two kids' obsession with geography meets the magic of #VibeCoding?** 
 
-Say hello to **GeoFun Explorer (v0.9)**, a passion project I recently built for my kids! 🚀
+Say hello to **GeoVerse Explorer (v0.9)**, a passion project I recently built for my kids! 🚀
 
 While building this, I realized that creating an educational app for children requires a completely different mindset. Here is how the project evolved from a simple idea to a fully-fledged learning tool:
 
@@ -14,7 +14,7 @@ While building this, I realized that creating an educational app for children re
 
 **4️⃣ Kid-Friendly Context:** To ensure the context is safe, visual, and easy to digest, I integrated **Kiddle.co** (a kid-safe search engine) to power the information pages right inside the quiz. 
 
-**5️⃣ Privacy is Non-Negotiable:** As a parent, protecting my kids' data is my top priority. GeoFun Explorer (v0.9) is built to run 100% locally. None of their information or scores are ever exfiltrated to a server—everything stays safely secured right within the browser's memory.
+**5️⃣ Privacy is Non-Negotiable:** As a parent, protecting my kids' data is my top priority. GeoVerse Explorer (v0.9) is built to run 100% locally. None of their information or scores are ever exfiltrated to a server—everything stays safely secured right within the browser's memory.
 
 Vibe-coding this project was an absolute blast. It’s amazing how quickly you can spin up a functional, safe, and educational environment when you combine the right tools with a little bit of parental inspiration! 
 

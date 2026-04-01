@@ -1,6 +1,6 @@
-# GeoFun Explorer (v0.9) 🌍
+# GeoVerse Explorer (v0.9) 🌍
 
-GeoFun Explorer (v0.9) is a dynamic, frontend-only geography quiz application designed for kids with varying ages. Players can input their initials, track running scores, and conquer geography topics across thousands of dynamic and static questions.
+GeoVerse Explorer (v0.9) is a dynamic, frontend-only geography quiz application designed for kids with varying ages. Players can input their initials, track running scores, and conquer geography topics across thousands of dynamic and static questions.
 
 ## Features
 - **Initials & High Scores**: Players enter a 3-letter initial on start. Top scores are continuously saved to the browser's `localStorage`.
