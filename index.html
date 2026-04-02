@@ -534,8 +534,13 @@
                     learnPanel.style.animation = "fadeIn 0.5s ease-out";
                     
                     let searchQuery;
-                    if(item.isFlagMode) searchQuery = `Flag of ${item.a}`; 
-                    else searchQuery = item.a; 
+                    if(item.isFlagMode) {
+                        searchQuery = `Flag of ${item.a}`; 
+                    } else if (!isNaN(item.a) && item.a !== '') {
+                        searchQuery = item.q.replace(/<[^>]*>?/gm, '');
+                    } else {
+                        searchQuery = item.a; 
+                    }
                     
                     const safeSearchUrl = `https://kiddle.co/s.php?q=${encodeURIComponent(searchQuery)}`;
 
@@ -569,8 +574,13 @@
                     learnPanel.style.animation = "fadeIn 0.5s ease-out";
                     
                     let searchQuery;
-                    if(item.isFlagMode) searchQuery = `Flag of ${item.a}`; 
-                    else searchQuery = item.a; 
+                    if(item.isFlagMode) {
+                        searchQuery = `Flag of ${item.a}`; 
+                    } else if (!isNaN(item.a) && item.a !== '') {
+                        searchQuery = item.q.replace(/<[^>]*>?/gm, '');
+                    } else {
+                        searchQuery = item.a; 
+                    }
                     
                     const safeSearchUrl = `https://kiddle.co/s.php?q=${encodeURIComponent(searchQuery)}`;
 
