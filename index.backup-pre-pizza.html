@@ -169,33 +169,6 @@
             .ans-btn { font-size: 1rem; padding: 15px; }
             .sub-btn { font-size: 0.9rem; padding: 10px; }
         }
-
-        @property --eaten {
-            syntax: '<percentage>';
-            initial-value: 0%;
-            inherits: false;
-        }
-        .pizza-pie {
-            position: relative;
-            border-radius: 50%;
-            background: 
-                radial-gradient(circle at 30% 30%, #ef4444 6px, transparent 7px),
-                radial-gradient(circle at 70% 40%, #ef4444 6px, transparent 7px),
-                radial-gradient(circle at 40% 70%, #ef4444 6px, transparent 7px),
-                conic-gradient(from 0deg, 
-                    rgba(0,0,0,0) 70deg, rgba(217,119,6,0.6) 71deg 73deg, rgba(0,0,0,0) 74deg,
-                    rgba(0,0,0,0) 142deg, rgba(217,119,6,0.6) 143deg 145deg, rgba(0,0,0,0) 146deg,
-                    rgba(0,0,0,0) 214deg, rgba(217,119,6,0.6) 215deg 217deg, rgba(0,0,0,0) 218deg,
-                    rgba(0,0,0,0) 286deg, rgba(217,119,6,0.6) 287deg 289deg, rgba(0,0,0,0) 290deg,
-                    rgba(0,0,0,0) 358deg, rgba(217,119,6,0.6) 359deg 360deg
-                ),
-                radial-gradient(circle at 50% 50%, #fbbf24 80%, #d97706 81%, #d97706 100%);
-            -webkit-mask-image: conic-gradient(transparent var(--eaten), black var(--eaten));
-            mask-image: conic-gradient(transparent var(--eaten), black var(--eaten));
-            transition: --eaten 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            transform: rotate(-36deg); /* Align slice cuts straight up */
-        }
     </style>
 </head>
 <body>
@@ -285,23 +258,12 @@
 
     <!-- GAME SCREEN -->
     <div id="game-screen" class="glass-panel">
-        <div class="meta-text" id="meta" style="display: flex; flex-direction: column; gap: 10px; align-items: stretch;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>Q: <span id="live-q">1/5</span></span>
-                <button class="home-icon-btn" onclick="saveHighScoreAndEnd()">🔚 Exit to Home</button>
-            </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 12px; border: 1px solid var(--border);">
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <span style="font-weight: bold; color: var(--correct); font-size: 1.1rem;">Score: <span id="live-score">0</span></span>
-                    <span id="live-acc">(0%)</span>
-                </div>
-                <div id="live-pizza-bank" style="display: flex; gap: 5px; flex-wrap: wrap; justify-content: flex-end; max-width: 60%;"></div>
-            </div>
+        <div class="meta-text" id="meta">
+            <span>Score: <span id="live-score">0</span> <span id="live-acc">(0%)</span></span>
+            <span>Q: <span id="live-q">1/5</span></span>
+            <button class="home-icon-btn" onclick="saveHighScoreAndEnd()">🔚 Exit to Home</button>
         </div>
-        
-        <div id="pizza-tracker" class="pizza-pie" style="--eaten: 0%; width: 90px; height: 90px; margin: 20px auto;"></div>
-        <h2 id="q-text" style="margin-top: 5px;">Loading...</h2>
+        <h2 id="q-text">Loading...</h2>
         <div id="hint-zone" style="margin-bottom: 15px; display: none; color: var(--text-light); text-shadow: 0 1px 3px black; font-size: 1.05rem; font-style: italic; background: rgba(30, 41, 59, 0.8); padding: 15px; border: 1px solid var(--accent); border-radius: 8px;"></div>
         <button id="hint-btn" onclick="useHint()" style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--accent); color: var(--accent); padding: 8px 20px; border-radius: 8px; font-family: 'Outfit'; cursor: pointer; display: none; margin: 0 auto 20px auto; font-size: 0.95rem; font-weight: bold; transition: all 0.2s;">💡 Use Hint 1 (-0.2 pts)</button>
         <div id="ans-zone"></div>
@@ -310,9 +272,7 @@
     <!-- POST ROUND SCREEN -->
     <div id="post-round-screen" class="glass-panel">
         <h2>Round Complete!</h2>
-        <div id="pizza-bank" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 20px 0;"></div>
         <h1 id="round-score-text" style="color: var(--correct)">Session Score: 0</h1>
-        <h3 id="round-pizza-text" style="color: var(--accent); margin-bottom: 5px;"></h3>
         <h3 id="round-acc-text" style="color: var(--text-dim); margin-bottom: 30px;">Accuracy: 0%</h3>
         
         <button class="btn-main" onclick="continuePlaying()" style="width: 100%; margin-bottom: 15px;">🔄 Keep Playing</button>
@@ -337,34 +297,8 @@
     let qIndex = 0;
     let currentQuestionHints = [];
     let hintsUsedThisQuestion = 0;
-    let fetchIdCounter = 0;
     let activeDeck = [];
     let localDB = null; 
-
-    function drawPizzaBank(score, containerId, size = '28px') {
-        const bank = document.getElementById(containerId);
-        if(!bank) return;
-        bank.innerHTML = "";
-        let fullPizzas = Math.floor(score);
-        let scoreRemainder = parseFloat((score % 1).toFixed(1));
-        let remainingSlices = Math.round(scoreRemainder / 0.2); 
-        
-        for(let i=0; i<fullPizzas; i++) {
-            let p = document.createElement('div');
-            p.className = 'pizza-pie';
-            p.style.setProperty('--eaten', '0%');
-            p.style.width = size; p.style.height = size;
-            bank.appendChild(p);
-        }
-        if (remainingSlices > 0) {
-            let p = document.createElement('div');
-            p.className = 'pizza-pie';
-            let percentEaten = 100 - (remainingSlices * 20);
-            p.style.setProperty('--eaten', `${percentEaten}%`);
-            p.style.width = size; p.style.height = size;
-            bank.appendChild(p);
-        }
-    } 
 
     // Fisher-Yates array shuffle
     function shuffleArray(array) {
@@ -533,17 +467,12 @@
     }
 
     // === Contextual Backgrounds & Hints ===
-    async function fetchDynamicContext(answerKeyword, isFlagMode, currentFetchId) {
+    async function fetchDynamicContext(answerKeyword, isFlagMode) {
         document.getElementById('dynamic-bg').style.opacity = 0;
         
         let fetchKeyword = answerKeyword;
         if (!isNaN(answerKeyword)) {
              document.getElementById('hint-btn').style.display = 'none';
-             
-             // Explainer for numeric answers
-             const hz = document.getElementById('hint-zone');
-             hz.style.display = 'block';
-             hz.innerText = "No hints available for numerical questions!";
              return;
         }
 
@@ -551,7 +480,6 @@
         try {
             const imgRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(fetchKeyword)}&prop=pageimages&format=json&pithumbsize=1200&origin=*`);
             const imgData = await imgRes.json();
-            if (currentFetchId !== fetchIdCounter) return;
             const pages = imgData.query.pages;
             const pageId = Object.keys(pages)[0];
             if (pages[pageId] && pages[pageId].thumbnail) {
@@ -562,17 +490,10 @@
             }
         } catch(e) { console.log('Bg fetch failed', e); }
 
-        const showNoHintMsg = () => {
-             const hz = document.getElementById('hint-zone');
-             hz.style.display = 'block';
-             hz.innerText = "No hints available for this question!";
-        };
-
         // 2. Fetch Hints (Wikipedia Extract)
         try {
             const txtRes = await fetch(`https://en.wikipedia.org/w/api.php?action=query&prop=extracts&exsentences=4&explaintext=1&titles=${encodeURIComponent(fetchKeyword)}&format=json&origin=*`);
             const txtData = await txtRes.json();
-            if (currentFetchId !== fetchIdCounter) return;
             const pages = txtData.query.pages;
             const pageId = Object.keys(pages)[0];
             if (pages[pageId] && pages[pageId].extract) {
@@ -592,19 +513,10 @@
                     
                     if (currentQuestionHints.length > 0) {
                         document.getElementById('hint-btn').style.display = 'block';
-                    } else {
-                        showNoHintMsg();
                     }
-                } else {
-                    showNoHintMsg();
                 }
-            } else {
-                showNoHintMsg();
             }
-        } catch(e) { 
-            console.log('Hint fetch failed', e); 
-            if (currentFetchId === fetchIdCounter) showNoHintMsg();
-        }
+        } catch(e) { console.log('Hint fetch failed', e); }
     }
 
     function useHint() {
@@ -619,8 +531,6 @@
         hintZone.appendChild(newHintPara);
         
         hintsUsedThisQuestion++;
-        const percentEaten = hintsUsedThisQuestion * 20; 
-        document.getElementById('pizza-tracker').style.setProperty('--eaten', `${percentEaten}%`);
         
         if(hintsUsedThisQuestion >= Math.min(2, currentQuestionHints.length)) {
             document.getElementById('hint-btn').style.display = 'none';
@@ -670,15 +580,12 @@
         document.getElementById('hint-btn').style.display = "none";
         document.getElementById('hint-btn').innerText = `💡 Use Hint 1 (-0.2 pts)`;
         document.getElementById('dynamic-bg').style.opacity = 0;
-        document.getElementById('pizza-tracker').style.setProperty('--eaten', '0%');
         
-        fetchIdCounter++;
-        fetchDynamicContext(item.a, item.isFlagMode, fetchIdCounter);
+        fetchDynamicContext(item.a, item.isFlagMode);
         
         document.getElementById('live-score').innerText = +totalScore.toFixed(1);
         let finishedAcc = (totalQuestionsSeen > 1) ? Math.round((totalScore / (totalQuestionsSeen - 1)) * 100) : 0;
         document.getElementById('live-acc').innerText = `(${finishedAcc}%)`;
-        drawPizzaBank(totalScore, 'live-pizza-bank', '28px');
         document.getElementById('live-q').innerText = `${qIndex + 1}/${activeDeck.length}`;
         
         document.getElementById('q-text').innerHTML = item.q;
@@ -706,9 +613,6 @@
                     // CORRECT - Educational Logic!
                     let pointsEarned = 1.0 - (hintsUsedThisQuestion * 0.2);
                     totalScore += pointsEarned;
-                    
-                    document.getElementById('live-score').innerText = +totalScore.toFixed(1);
-                    drawPizzaBank(totalScore, 'live-pizza-bank', '28px');
                     
                     // Cleanup hints to make room for feedback panel
                     document.getElementById('hint-zone').style.display = 'none';
@@ -803,12 +707,8 @@
     function endRound() {
         document.getElementById('game-screen').style.display = 'none';
         document.getElementById('dynamic-bg').style.opacity = 0; // hide bg on exit
-        
-        drawPizzaBank(totalScore, 'pizza-bank', '60px');
-
         document.getElementById('post-round-screen').style.display = 'block';
         document.getElementById('round-score-text').innerText = `Session Score: ${+totalScore.toFixed(1)}`;
-        document.getElementById('round-pizza-text').innerText = `Out of 5 Pizzas, you won a total of ${fullPizzas} pizza${fullPizzas !== 1 ? 's' : ''} and ${remainingSlices} slice${remainingSlices !== 1 ? 's' : ''}!`;
         document.getElementById('round-acc-text').innerText = `Accuracy: ${getAccuracy()}%`;
         updateLobbyHeaders(); 
     }
@@ -892,7 +792,7 @@
             <li><strong>Entering the Lobby:</strong> Submit your 3-letter initials via the Welcome Screen to access the main game Hub. You can tap the dropdown at the top to set the difficulty scale globally (Novice, Intermediate, Expert).</li>
             <li><strong>Game Modes:</strong> Select <em>"Random Global Trivia"</em> for an endless mix of global trivia, <em>"Random Flags Challenge"</em> to test flag recognition, or open <em>"Specific Categories"</em> to drill down into precise topics like Rivers or Neighbors.</li>
             <li><strong>The Format:</strong> Every single round consists of 5 dynamically scrambled questions. Answering questions correctly boosts your Session Score and overall Accuracy! Each question starts at a max of 1.0 points.</li>
-            <li><strong>Hint System (The Pizzas!):</strong> Stuck? You can take up to 2 hints per question! Every single question represents a full 5-slice Pizza. When you take a Hint, an animated bite consumes 1 slice (-0.2 points) out of your pie! Uneaten pizzas are banked, teaching kids strategic pacing and fractions/decimals!</li>
+            <li><strong>Hint System:</strong> Stuck? You can use up to 2 dynamically generated hints per question! Taking a hint seamlessly deducts 0.2 points from that question's max score, teaching kids strategic pacing and decimals!</li>
             <li><strong>Contextual Learning:</strong> At the very end of a question, you'll be given the correct answer alongside an exploratory deep-dive link to securely cross-reference the topic.</li>
             <li><strong>Score Persistence:</strong> By tapping <em>"Keep Playing"</em>, your running score safely rolls right over into your next set sequence smoothly. Click <em>"Save Score & End Game"</em> to securely lock in your session and inject it right into your personal Leaderboard on this device!</li>
         </ul>

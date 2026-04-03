@@ -11,6 +11,7 @@ Furthermore, our Post-Answer learning panels are carefully sandboxed to interact
 ### How to Play
 * **Entering the Lobby:** Submit your 3-letter initials via the Welcome Screen to access the main game Hub. You can tap the dropdown at the top to set the difficulty scale globally (Novice, Intermediate, Expert).
 * **Game Modes:** Select *"Random Global Trivia"* for an endless mix of global trivia, *"Random Flags Challenge"* to test flag recognition, or open *"Specific Categories"* to drill down into precise topics like Rivers or Neighbors.
-* **The Format:** Every single round consists of 5 dynamically scrambled questions. Answering questions correctly boosts your Session Score and overall Accuracy!
+* **The Format:** Every single round consists of 5 dynamically scrambled questions. Answering questions correctly boosts your Session Score and overall Accuracy! Each question starts at a max of 1.0 points.
+* **Hint System (The Pizzas!):** Stuck? You can take up to 2 hints per question! Every single question represents a full 5-slice Pizza. When you take a Hint, an animated bite consumes 1 slice (-0.2 points) out of your pie! Uneaten pizzas are banked, teaching kids strategic pacing and fractions/decimals!
 * **Contextual Learning:** At the very end of a question, you'll be given the correct answer alongside an exploratory deep-dive link to securely cross-reference the topic.
 * **Score Persistence:** By tapping *"Keep Playing"*, your running score safely rolls right over into your next set sequence smoothly. Click *"Save Score & End Game"* to securely lock in your session and inject it right into your personal Leaderboard on this device!
