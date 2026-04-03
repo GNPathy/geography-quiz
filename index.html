@@ -421,11 +421,12 @@
         tbody.innerHTML = "";
         scores.forEach((s, i) => {
             const acc = s.accuracy !== undefined ? `${s.accuracy}%` : `N/A`;
+            const formattedScore = Number(s.score).toFixed(1);
             const rowStr = `<tr>
                 <td style="padding: 10px">${i+1}</td>
                 <td style="padding: 10px; font-weight:bold; color: var(--primary); letter-spacing: 2px;">${s.initials}</td>
                 <td style="padding: 10px; text-align:center; color: var(--text-dim)">${acc}</td>
-                <td style="padding: 10px; text-align:right; font-weight:bold">${s.score}</td>
+                <td style="padding: 10px; text-align:right; font-weight:bold">${formattedScore}</td>
             </tr>`;
             tbody.innerHTML += rowStr;
         });
@@ -578,6 +579,14 @@
             const pageId = Object.keys(pages)[0];
             if (pages[pageId] && pages[pageId].extract) {
                 let text = pages[pageId].extract;
+                
+                // Immediately bail if Wikipedia hits a Disambiguation multi-list page
+                if (text.includes("may refer to:") || text.includes("may also refer to:")) {
+                    return showNoHintMsg();
+                }
+                
+                // Strip out standard Wikipedia markdown headings and only take the first paragraph
+                text = text.split('\n==')[0].split('\n\n')[0];
                 
                 // Remove parenthetical translations/pronunciations that often leak the answer
                 text = text.replace(/\s*\([^)]*\)/g, '');
@@ -857,7 +866,7 @@
     function saveHighScoreAndEnd() {
         if(totalQuestionsSeen > 0) {
             let scores = JSON.parse(localStorage.getItem('geoGridHighScores') || '[]');
-            scores.push({ initials: playerInitials, score: totalScore, accuracy: getAccuracy() });
+            scores.push({ initials: playerInitials, score: +(totalScore.toFixed(1)), accuracy: getAccuracy() });
             
             scores.sort((a,b) => {
                 if (b.score === a.score) return b.accuracy - a.accuracy;
