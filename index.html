@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoVerse Explorer (v0.9)</title>
+    <title>GeoVerse Explorer</title>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQT846PJ40"></script>
@@ -201,7 +202,7 @@
 <body>
     <div id="dynamic-bg" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-size: cover; background-position: center; z-index: -1; opacity: 0; transition: opacity 1s, background-image 1s;"></div>
 
-    <h1>🌍 GeoVerse Explorer (v0.9) 🌍</h1>
+    <h1>🌍 GeoVerse Explorer 🌍</h1>
     <p style="text-align: center; color: #64748b; margin-top: 5px; margin-bottom: 30px; font-size: 0.95rem; line-height: 1.5;">Power your curiosity journey, one Geography question at a time</p>
     
     <!-- WELCOME SCREEN -->
@@ -805,12 +806,30 @@
         document.getElementById('dynamic-bg').style.opacity = 0; // hide bg on exit
         
         drawPizzaBank(totalScore, 'pizza-bank', '60px');
+        
+        // Re-calculate values since we passed it over to drawPizzaBank
+        let fullPizzas = Math.floor(totalScore);
+        let scoreRemainder = parseFloat((totalScore % 1).toFixed(1));
+        let remainingSlices = Math.round(scoreRemainder / 0.2); 
 
         document.getElementById('post-round-screen').style.display = 'block';
         document.getElementById('round-score-text').innerText = `Session Score: ${+totalScore.toFixed(1)}`;
-        document.getElementById('round-pizza-text').innerText = `Out of 5 Pizzas, you won a total of ${fullPizzas} pizza${fullPizzas !== 1 ? 's' : ''} and ${remainingSlices} slice${remainingSlices !== 1 ? 's' : ''}!`;
-        document.getElementById('round-acc-text').innerText = `Accuracy: ${getAccuracy()}%`;
+        document.getElementById('round-pizza-text').innerHTML = `🎉 Yay! You banked a total of <strong>${fullPizzas} full pizza${fullPizzas !== 1 ? 's' : ''}</strong> and <strong>${remainingSlices} extra slice${remainingSlices !== 1 ? 's' : ''}</strong>! 🎉`;
+        
+        // Ensure accuracy safely calculates
+        let safeAcc = (totalQuestionsSeen > 0) ? Math.round((totalScore / totalQuestionsSeen) * 100) : 0;
+        document.getElementById('round-acc-text').innerText = `Accuracy: ${safeAcc}%`;
+        
         updateLobbyHeaders(); 
+        
+        // Bam! Confetti drops based on Pizzas won!
+        if (totalScore > 0 && typeof confetti === 'function') {
+            confetti({
+                particleCount: Math.floor(totalScore * 50),
+                spread: 120,
+                origin: { y: 0.6 }
+            });
+        }
     }
 
     function handleFeedbackClick(e) {
