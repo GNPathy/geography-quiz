@@ -321,14 +321,27 @@
     </div>
 
     <!-- Global Footer -->
-    <div style="margin-top: auto; padding-top: 40px; text-align: center; font-size: 0.9rem;">
-        <a href="#" onclick="handleFeedbackClick(event)" style="color: var(--text-dim); text-decoration: none; margin-right: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
-            📧 Click to send Feedback
-        </a> 
-        <span style="color: var(--border);">|</span>
-        <a href="https://antigravity.google/" target="_blank" style="color: var(--text-dim); text-decoration: none; margin-left: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
-            ✨ Thanks to Antigravity
-        </a>
+    <div style="margin-top: auto; padding-top: 40px; text-align: center; font-size: 0.9rem; line-height: 1.8;">
+        <div style="margin-bottom: 10px;">
+            <a href="#" onclick="handleFeedbackClick(event)" style="color: var(--text-dim); text-decoration: none; margin-right: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
+                📧 Send Feedback
+            </a> 
+            <span style="color: var(--border);">|</span>
+            <a href="https://antigravity.google/" target="_blank" style="color: var(--text-dim); text-decoration: none; margin-left: 15px; transition: color 0.2s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-dim)'">
+                ✨ Thanks to Antigravity
+            </a>
+        </div>
+        <div style="color: var(--text-dim); font-size: 0.85rem;">
+            Jump To: 
+            <a href="../History/index.html" style="color: var(--primary); text-decoration: none; font-weight: bold; margin-left: 5px;">🕰️ TimeVerse Explorer</a>
+            <span style="color: var(--border); margin: 0 5px;">|</span>
+            <span style="color: #64748b; font-style: italic;">🌌 SciVerse Explorer*</span>
+            <span style="color: var(--border); margin: 0 5px;">|</span>
+            <span style="color: #64748b; font-style: italic;">🧬 BioVerse Explorer*</span>
+            <span style="color: var(--border); margin: 0 5px;">|</span>
+            <span style="color: #64748b; font-style: italic;">🥳 FunVerse Explorer*</span>
+        </div>
+        <div style="font-size: 0.75rem; color: #475569; font-style: italic; margin-top: 2px;">* Arriving shortly</div>
     </div>
 
 <script>
@@ -591,10 +604,23 @@
                 // Remove parenthetical translations/pronunciations that often leak the answer
                 text = text.replace(/\s*\([^)]*\)/g, '');
                 
-                const safeRegex = new RegExp("(" + fetchKeyword.split(" ").join('|') + ")", "gi");
-                let censoredText = text.replace(safeRegex, "_____");
-                
-                let sentences = censoredText.split('. ').filter(s => s.trim().length > 10).map(s => s + ".");
+                // Stem-based censoring: censor every word of the answer (and word stems) for subtlety
+                let censoredText = text;
+                let answerWords = fetchKeyword.split(/[\s\-,]+/).filter(w => w.length > 3);
+                answerWords.push(fetchKeyword); // Also censor the full phrase
+                answerWords.forEach(word => {
+                    let escaped = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    // Only take the first 5 chars as the stem to censor variants
+                    let stem = escaped.length >= 5 ? escaped.substring(0, 5) : escaped;
+                    censoredText = censoredText.replace(new RegExp(stem + '[a-z]*', 'gi'), '____');
+                });
+
+                // Split on sentence boundaries but NOT on abbreviations like U.S. or Mr.
+                // We detect real sentence endings as: lowercase/digit then '. ' then uppercase
+                let sentences = censoredText
+                    .split(/(?<=[a-z0-9])\.\s+(?=[A-Z])/)
+                    .filter(s => s.trim().length > 15)
+                    .map(s => s.trim().replace(/\.?$/, '.'));
                 if (sentences.length > 0) {
                     currentQuestionHints = [];
                     if (sentences[0]) currentQuestionHints.push(sentences[0]);
@@ -736,11 +762,10 @@
                     
                     let searchQuery;
                     if(item.isFlagMode) {
-                        searchQuery = `Flag of ${item.a}`; 
-                    } else if (!isNaN(item.a) && item.a !== '') {
-                        searchQuery = item.q.replace(/<[^>]*>?/gm, '');
+                        searchQuery = `Flag of ${item.a}`;
                     } else {
-                        searchQuery = item.a; 
+                        // Always use the full answer phrase for a targeted, meaningful Kiddle search
+                        searchQuery = `${item.a} history facts`;
                     }
                     
                     const safeSearchUrl = `https://kiddle.co/s.php?q=${encodeURIComponent(searchQuery)}`;
